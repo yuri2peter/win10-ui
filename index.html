@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <title>win10-ui</title>
+    <link rel='Shortcut Icon' type='image/x-icon' href='./img/windows.ico'>
+    <script type="text/javascript" src="./js/jquery-3.1.1.min.js"></script>
+    <link href="./css/animate.css" rel="stylesheet">
+    <script type="text/javascript" src="./component/layer-v3.0.3/layer/layer.js"></script>
+    <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link href="./css/default.css" rel="stylesheet">
+    <script type="text/javascript" src="./js/win10.js"></script>
+    <style>
+        * {
+            font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
+        }
+    </style>
+    <script>
+        Win10.onReady(function () {
+        });
+    </script>
+</head>
+<body>
+<div id="win10">
+    <img id="win10_img_loader1" class="img-loader" src="./img/wallpapers/windows.jpg">
+    <img id="win10_img_loader2" class="img-loader" src="./img/wallpapers/login.jpg">
+    <div class="desktop">
+        <div id="win10-shortcuts">
+            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','WIN10-UI')">
+                <div class="icon"><img src="img/icon/website.png"/></div>
+                <div class="title">WIN10-UI</div>
+            </div>
+            <div class="shortcut" onclick="window.open('./demo.html')">
+                <div class="icon"><img src="img/icon/demo.png"/></div>
+                <div class="title">查看DEMO</div>
+            </div>
+        </div>
+    </div>
+    <div id="win10-menu" class="hidden">
+        <div class="list win10-menu-hidden animated animated-slideOutLeft">
+            <div class="item" onclick="Win10.logout()"><span class=" icon fa fa-user-o fa-fw"></span>注销</div>
+            <div class="item" onclick="layer.confirm('确认要关闭本页吗?', {icon: 3, title:'提示'}, function(index){Win10.exit();layer.close(index);});"><span class=" icon fa fa-window-close fa-fw"></span>关闭</div>
+        </div>
+        <div class="blocks">
+            <div class="menu_group">
+                <div class="title">welcome</div>
+                <div class="block" loc="1,1" size="6,4">
+                    <div class="content"><h2>Welcome to Win10-UI</h2></div>
+                </div>
+            </div>
+        </div>
+        <div id="win10-menu-switcher"></div>
+    </div>
+    <div id="win10_command_center" class="hidden_right">
+        <div class="title">
+            <h4 style="float: left">消息中心 </h4>
+            <span id="win10_btn_command_center_clean_all">全部清除</span>
+        </div>
+        <div class="msgs"></div>
+    </div>
+    <div id="win10_task_bar">
+        <div id="win10_btn_group_left" class="btn_group">
+            <div id="win10_btn_win" class="btn"><span class="fa fa-windows"></span></div>
+            <div class="btn" id="win10-btn-browser"><span class="fa fa-internet-explorer"></span></div>
+        </div>
+        <div id="win10_btn_group_middle" class="btn_group"></div>
+        <div id="win10_btn_group_right" class="btn_group">
+            <div class="btn" id="win10_btn_time">
+                0:00<br/>
+                1993/8/13
+            </div>
+            <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-comment-o"></span></div>
+            <div class="btn" id="win10_btn_show_desktop"></div>
+        </div>
+    </div>
+
+    <!--    自定义登录页面-->
+    <style>
+        #win10-login-box {
+            width: 40%;
+            overflow: hidden;
+            margin: 0 auto;
+            min-width: 360px;
+        }
+
+        .win10-login-box-square {
+            width: 35%;
+            margin: 0 auto;
+            border-radius: 50%;
+            background-color: darkgray;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .win10-login-box-square::after {
+            content: "";
+            display: block;
+            padding-bottom: 100%;
+        }
+
+        .win10-login-box-square .content {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        #win10-form-login {
+            width: 100%;
+        }
+
+        #win10-form-login input.text {
+            width: 50%;
+            display: block;
+            border: 0;
+            margin: 0 auto;
+            line-height: 36px;
+            font-size: 20px;
+            padding: 0 1em;
+        }
+    </style>
+    <div id="win10-login" class=""> <!-- 为#win10-login 添加class : top 默认显示登录页 -->
+        <div style="height: 10%;min-height: 120px"></div>
+        <div id="win10-login-box">
+            <div class="win10-login-box-square">
+                <img src="./img/avatar.gif" class="content"/>
+            </div>
+            <p style="font-size: 30px;color: white;text-align: center">游客</p>
+            <form id="win10-form-login" action="#" onsubmit="Win10.login();return false;">
+                <input class="text" type="password">
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
