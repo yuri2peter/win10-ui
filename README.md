@@ -34,6 +34,7 @@ Win10-ui是一款win10风格的后台UI，让你轻松搭建一个别具一格�
 ## 使用说明
 
 ####如何自定义桌面图标？
+
 ```html
 <div id="win10-shortcuts">
      <div class="shortcut" onclick="//do something...">
@@ -45,6 +46,7 @@ Win10-ui是一款win10风格的后台UI，让你轻松搭建一个别具一格�
 > 图标并不一定要求提供图片图标。图标的图片默认是填充整个div的（100%）。
 
 ####如何自定义开始菜单列表?
+
 ```html
 <div class="list win10-menu-hidden animated animated-slideOutLeft">
      <div class="item">一级菜单</div>
@@ -66,6 +68,7 @@ Win10-ui是一款win10风格的后台UI，让你轻松搭建一个别具一格�
 ```
 
 ####如何自定义开始菜单磁贴?
+
 ```html
 <div class="blocks">
     <div class="menu_group">
