@@ -201,6 +201,11 @@ var Win10 = {
     },
     openUrl: function (url, title) {
         this._countTask++;
+        url=url.replace(/(^\s*)|(\s*$)/g, "");
+        var preg=/^(https?:\/\/|\.\/|\/\/)/;
+        if(!preg.test(url)){
+            url='http://'+url;
+        }
         if (!url) {
             url = '//yuri2.cn';
         }
@@ -324,6 +329,15 @@ var Win10 = {
                 }
             })
         },1000);
+    },
+    _onImgComplete:function (img, callback) {
+        if(!img){return;}
+        var timer = setInterval(function() {
+            if (img.complete) {
+                callback(img);
+                clearInterval(timer)
+            }
+        }, 50)
     },
     _init:function () {
         $("#win10_btn_win").click(function () {
@@ -462,28 +476,12 @@ var Win10 = {
         },1000);
 
         //处理背景加载
-        var win10_img_loader1=$("#win10_img_loader1");
-        if(win10_img_loader1.length>0){
-            var img_src1=win10_img_loader1.attr('src');
-            var itv_img_load1=setInterval(function () {
-                var is_loaded1=win10_img_loader1[0].height!==0;
-                if(is_loaded1){
-                    clearInterval(itv_img_load1);
-                    Win10.setBackgroundImg(img_src1);
-                }
-            },300);
-        }
-        var win10_img_loader2=$("#win10_img_loader2");
-        if(win10_img_loader2.length>0){
-            var img_src2=win10_img_loader2.attr('src');
-            var itv_img_load2=setInterval(function () {
-                var is_loaded2=win10_img_loader2[0].height!==0;
-                if(is_loaded2){
-                    clearInterval(itv_img_load2);
-                    Win10.setLoginImg(img_src2);
-                }
-            },300);
-        }
+        this._onImgComplete($("#win10_img_loader1")[0],function (img) {
+            Win10.setBackgroundImg(img.src);
+        });
+        this._onImgComplete($("#win10_img_loader2")[0],function (img) {
+            Win10.setLoginImg(img.src);
+        });
 
         //离开前警告
         document.body.onbeforeunload = function(){
@@ -507,6 +505,11 @@ var Win10 = {
         //细节
         $(document).on('focus',".win10-layer-open-browser textarea",function () {
             $(this).attr('spellcheck','false');
+        });
+        $(document).on('keyup',".win10-layer-open-browser textarea",function (e) {
+            if(e.keyCode===13){
+                $(this).parent().parent().find('.layui-layer-btn0').click();
+            }
         });
 
         //打广告

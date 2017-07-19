@@ -9,6 +9,13 @@ body {
     overflow: hidden;
 }
 
+#win10-login *,#win10 *{
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
+}
+
 #win10-login{
     background: black no-repeat fixed;
     width: 100%;
@@ -317,10 +324,6 @@ body {
     position: absolute;
     top: 40px;
     left: 0;
-    -webkit-user-select:none;
-    -moz-user-select:none;
-    -ms-user-select:none;
-    user-select:none;
     cursor: default;
 }
 
