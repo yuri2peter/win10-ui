@@ -202,7 +202,7 @@ var Win10 = {
     openUrl: function (url, title) {
         this._countTask++;
         url=url.replace(/(^\s*)|(\s*$)/g, "");
-        var preg=/^(https?:\/\/|\.\/|\/\/)/;
+        var preg=/^(https?:\/\/|\.\.?\/|\/\/)/;
         if(!preg.test(url)){
             url='http://'+url;
         }
