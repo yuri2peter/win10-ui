@@ -283,6 +283,7 @@ var Win10 = {
                 $(this).addClass('active');
                 Win10.settop(layero);
                 layero.show();
+                // layero.find('.layui-layer-resize').click();
             }
         });
         this.menuClose();
@@ -407,13 +408,11 @@ var Win10 = {
         $("#win10_btn_group_middle").click(function () {
             $("#win10 .desktop").click();
         });
-
         $(document).on('click', '.win10-btn-refresh', function () {
             var index = $(this).attr('index');
             var iframe = Win10.getLayeroByIndex(index).find('iframe');
             iframe.attr('src', iframe.attr('src'));
         });
-
         $(document).on('click', '.win10-btn-change-url', function () {
             var index = $(this).attr('index');
             var iframe = Win10.getLayeroByIndex(index).find('iframe');
@@ -428,19 +427,16 @@ var Win10 = {
                 iframe.attr('src', value);
             });
         });
-
         $(document).on('mousedown','.win10-open-iframe .layui-layer-title',function () {
             var layero=$(this).parent();
             Win10.settop(layero);
             Win10.checkTop();
         });
-
         $('#win10_btn_group_middle').on('click','.btn_close',function () {
             var index = $(this).parent().attr('index') ;
             Win10.getLayeroByIndex(index).remove();
             $(this).parent().remove();
         });
-
         $('#win10-menu .list').on('click','.item',function () {
             var e=$(this);
             while (e.next().hasClass('sub-item')){
@@ -450,7 +446,6 @@ var Win10 = {
                 e=e.next();
             }
         });
-
         $("#win10-btn-browser").click(function () {
             layer.prompt({
                 title: '访问网址',
@@ -464,7 +459,6 @@ var Win10 = {
                 Win10.openUrl(value)
             });
         });
-
         setInterval(function () {
             var myDate = new Date();
             var year=myDate.getFullYear();
@@ -474,7 +468,6 @@ var Win10 = {
             var mins=myDate.getMinutes();if (mins<10){mins='0'+mins}
             $("#win10_btn_time").html(hours+':'+mins+'<br/>'+year+'/'+month+'/'+date);
         },1000);
-
         //处理背景加载
         this._onImgComplete($("#win10_img_loader1")[0],function (img) {
             Win10.setBackgroundImg(img.src);
@@ -482,26 +475,21 @@ var Win10 = {
         this._onImgComplete($("#win10_img_loader2")[0],function (img) {
             Win10.setLoginImg(img.src);
         });
-
         //离开前警告
         document.body.onbeforeunload = function(){
             window.event.returnValue = '系统可能不会保存您所做的更改';
         };
-
         //预处理左侧菜单
         Win10.buildList();
-
         Win10._startAnimate();
         Win10.renderShortcuts();
         Win10.renderMenuBlocks();
         Win10._showShotcut();
-
         //窗口改大小，重新渲染
         $(window).resize(function() {
             Win10.renderMenuBlocks();
             Win10.renderShortcuts();
         });
-
         //细节
         $(document).on('focus',".win10-layer-open-browser textarea",function () {
             $(this).attr('spellcheck','false');
@@ -511,7 +499,6 @@ var Win10 = {
                 $(this).parent().parent().find('.layui-layer-btn0').click();
             }
         });
-
         //打广告
         setTimeout(function () {
             console.log('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ')
