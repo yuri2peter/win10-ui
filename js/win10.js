@@ -7,6 +7,7 @@ var Win10 = {
     _animated_classes:[],
     _animated_liveness:0,
     _switchMenuTooHurry:false,
+    _lang:'unknown',
     _handleReady:function () {},
     _hideShotcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");
@@ -102,7 +103,7 @@ var Win10 = {
             '<div class="content">' + content + '</div>' +
             '</div>');
         $("#win10_command_center .msgs").prepend(e);
-        layer.tips('新消息：'+title, '#win10_btn_command', {
+        layer.tips(Win10.lang('新消息:','New message:')+title, '#win10_btn_command', {
             tips: [1, '#3c6a4a'],
             time: 3000
         });
@@ -310,6 +311,9 @@ var Win10 = {
         $('#win10-login').removeClass('animated zoomOut');
         $('#win10-login').addClass('animated zoomIn');
     },
+    lang:function (cn,en) {
+        return this._lang==='zh-cn'?cn:en;
+    },
     _startAnimate:function () {
         setInterval(function () {
             var classes_lenth=Win10._animated_classes.length;
@@ -341,6 +345,10 @@ var Win10 = {
         }, 50)
     },
     _init:function () {
+
+        //获取语言
+        this._lang=(navigator.language || navigator.browserLanguage).toLowerCase();
+
         $("#win10_btn_win").click(function () {
             Win10.commandCenterClose();
             Win10.menuToggle();
@@ -417,7 +425,7 @@ var Win10 = {
             var index = $(this).attr('index');
             var iframe = Win10.getLayeroByIndex(index).find('iframe');
             layer.prompt({
-                title: '修改网址',
+                title: Win10.lang('编辑网址','Edit URL'),
                 formType: 2,
                 value: iframe.attr('src'),
                 area: ['500px', '200px'],
@@ -448,7 +456,7 @@ var Win10 = {
         });
         $("#win10-btn-browser").click(function () {
             layer.prompt({
-                title: '访问网址',
+                title: Win10.lang('访问网址','Visit URL'),
                 formType: 2,
                 value: '',
                 skin:'win10-layer-open-browser',
@@ -477,7 +485,7 @@ var Win10 = {
         });
         //离开前警告
         document.body.onbeforeunload = function(){
-            window.event.returnValue = '系统可能不会保存您所做的更改';
+            window.event.returnValue = Win10.lang( '系统可能不会保存您所做的更改','The system may not save the changes you have made.');
         };
         //预处理左侧菜单
         Win10.buildList();
@@ -501,7 +509,7 @@ var Win10 = {
         });
         //打广告
         setTimeout(function () {
-            console.log('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ')
+            console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ','The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'))
         },2000);
     },
     onReady:function (handle) {
