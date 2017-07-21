@@ -181,6 +181,7 @@ body {
     background-color: rgba(39, 46, 39, 0.81);
     height: 70%;
     width: 75%;
+    max-width: 880px;
     overflow: auto;
     padding-left:10px;
     z-index: 1000;
@@ -270,7 +271,7 @@ body {
 }
 
 #win10-menu .blocks{
-
+    max-width: 650px;
     width:calc(100% - 260px);
 }
 
@@ -293,10 +294,11 @@ body {
 
 #win10-menu .menu_group {
     float: left;
-    width: 380px;
+    width: 300px;
     color: white;
     position: relative;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 #win10-menu .menu_group .title {

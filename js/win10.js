@@ -65,7 +65,7 @@ var Win10 = {
         });
     },
     renderMenuBlocks:function () {
-        var cell_width=this.isSmallScreen()?($('#win10-menu').css('width').split('px')[0])/8:60;
+        var cell_width=45;
         var groups=$("#win10-menu .menu_group");
         groups.each(function () {
             var group=$(this);
@@ -218,7 +218,7 @@ var Win10 = {
             area = ['100%', (document.body.clientHeight - 40) + 'px'];
             offset = ['0', '0'];
         } else {
-            area = ['70%', '70%'];
+            area = ['80%', '80%'];
             offset = [(this._countTask % 10) * 20 + 'px', (this._countTask % 10) * 20 + 100 + 'px'];
         }
         var index = layer.open({
@@ -312,7 +312,7 @@ var Win10 = {
         $('#win10-login').addClass('animated zoomIn');
     },
     lang:function (cn,en) {
-        return this._lang==='zh-cn'?cn:en;
+        return this._lang==='zh-cn'||this._lang==='zh-tw'?cn:en;
     },
     _startAnimate:function () {
         setInterval(function () {
@@ -427,6 +427,7 @@ var Win10 = {
             layer.prompt({
                 title: Win10.lang('编辑网址','Edit URL'),
                 formType: 2,
+                skin:'win10-layer-open-browser',
                 value: iframe.attr('src'),
                 area: ['500px', '200px'],
                 zIndex:99999999999
@@ -495,7 +496,6 @@ var Win10 = {
         Win10._showShotcut();
         //窗口改大小，重新渲染
         $(window).resize(function() {
-            Win10.renderMenuBlocks();
             Win10.renderShortcuts();
         });
         //细节
