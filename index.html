@@ -44,10 +44,21 @@
             <div class="item" onclick="layer.confirm('确认要关闭本页吗?', {icon: 3, title:'提示'}, function(index){Win10.exit();layer.close(index);});"><span class=" icon fa fa-window-close fa-fw"></span>关闭</div>
         </div>
         <div class="blocks">
+            <style>
+                /*磁贴自定义样式*/
+                .win10-block-content-text{
+                    line-height: 44px;
+                    text-align: center;
+                    font-size: 16px;
+                }
+            </style>
             <div class="menu_group">
                 <div class="title">welcome</div>
                 <div class="block" loc="1,1" size="6,4">
-                    <div class="content"><h2>Welcome to Win10-UI</h2></div>
+                    <div class="content">
+                        <div style="font-size:100px;line-height: 132px;margin: 0 auto ;display: block" class="fa fa-fw fa-windows win10-block-content-text"></div>
+                        <div class="win10-block-content-text" style="font-size: 22px">欢迎使用 Win10-UI</div>
+                    </div>
                 </div>
             </div>
         </div>

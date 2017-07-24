@@ -92,40 +92,48 @@ layer.confirm('确认要关闭本页吗?', {icon: 3, title:'提示'}, function(i
             </div>
         </div>
         <div class="blocks">
+            <style>
+                /*磁贴自定义样式*/
+                .win10-block-content-text{
+                    line-height: 44px;
+                    text-align: center;
+                    font-size: 16px;
+                }
+            </style>
             <div class="menu_group">
                 <div class="title">
                     常用场景(宽屏)
                 </div>
                 <div loc="1,1" size="4,3" class="block">
                     <div class="content" style="background-color: orangered">
-                        <h1 style="text-align: center">WIN10-UI</h1>
-                        <h2 style="text-align: center">显示信息</h2>
+                        <div class="win10-block-content-text" style="font-size: 26px;line-height: 88px">WIN10-UI</div>
+                        <div class="win10-block-content-text">显示信息</div>
                     </div>
                 </div>
                 <div loc="5,1" size="2,1" class="block">
                     <div class="content" style="background-color: green">
-                        <h4 style="text-align: center">文字按钮</h4>
+                        <div  class="win10-block-content-text">文字按钮</div>
                     </div>
                 </div>
                 <div loc="5,2" size="2,2" class="block">
                     <div class="content">
-                        <img style="width: 50%;height: 50%;margin: 10px auto;display: block" src="./img/icon/baidu.png">
-                        <h5 style="text-align: center">图标按钮</h5>
+                        <img style="width: 40px;height: 40px;margin: 2px auto;display: block" src="./img/icon/baidu.png">
+                        <div class="win10-block-content-text">图标按钮</div>
                     </div>
                 </div>
                 <div loc="1,4" size="6,3" class="block">
                     <div class="content" style="background: url('./img/presentation/1.png');background-size: auto">
-                        <h4 style="margin-top: 50px;text-align: center;">显示图片</h4>
+                        <div style="line-height:132px;text-align: center;">显示图片</div>
                     </div>
                 </div>
                 <div loc="1,7" size="2,1" class="block">
                     <div class="content" style="background-color: grey" onclick="Win10.openUrl('//www.baidu.com')">
-                        <h4 style="text-align: center;">内部链接</h4>
+                        <div class="win10-block-content-text">内部链接</div>
                     </div>
                 </div>
                 <div loc="3,7" size="2,1" class="block">
                     <div class="content" style="background-color: blue" onclick="window.open('https://www.baidu.com')">
-                        <h4 style="text-align: center;">外部链接</h4>
+                        <div class="win10-block-content-text">外部链接</div>
                     </div>
                 </div>
             </div>

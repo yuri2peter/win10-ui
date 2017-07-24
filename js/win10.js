@@ -65,7 +65,7 @@ var Win10 = {
         });
     },
     renderMenuBlocks:function () {
-        var cell_width=45;
+        var cell_width=44;
         var groups=$("#win10-menu .menu_group");
         groups.each(function () {
             var group=$(this);
