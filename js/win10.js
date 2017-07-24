@@ -167,7 +167,7 @@ var Win10 = {
         //置顶窗口
         var max_zindex=0;
         $(".win10-open-iframe").each(function () {
-            z=$(this).css('z-index');
+            z=parseInt($(this).css('z-index'));
             $(this).css('z-index',z-1);
             if(z>max_zindex){max_zindex=z;}
         });
@@ -175,7 +175,7 @@ var Win10 = {
     },
     checkTop:function () {
         var max_index=0,max_z=0,btn=null;
-        $("#win10_win10_btn_group_middle .btn.show").each(function () {
+        $("#win10_btn_group_middle .btn.show").each(function () {
             var index=$(this).attr('index');
             var layero=Win10.getLayeroByIndex(index);
             var z=layero.css('z-index');
@@ -241,18 +241,13 @@ var Win10 = {
                 Win10.checkTop();
                 return false;
             },
-            success: function (layero, index) {
-                if (isFirst) {
-                    layero.find('.layui-layer-setwin').prepend('<a class="win10-btn-change-url" index="' + index + '" href="#"><span class="fa fa-chain"></span></a><a class="win10-btn-refresh" index="' + index + '" href="#"><span class="fa fa-refresh"></span></a>');
-                    // layer.setTop(layero); //可以被置顶
-                    layero.css('z-index',Win10._countTask+813);
-                    isFirst = false;
-                }
-            }
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
         var btn = $('<div id="win10_' + index + '" index="' + index + '" class="btn show active"><div class="btn_title">' + title + '</div><div class="btn_close fa fa-close"></div></div>');
-        Win10.settop(Win10.getLayeroByIndex(index));
+        var layero_opened=Win10.getLayeroByIndex(index);
+        Win10.settop(layero_opened);
+        layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-change-url" index="' + index + '" href="#"><span class="fa fa-chain"></span></a><a class="win10-btn-refresh" index="' + index + '" href="#"><span class="fa fa-refresh"></span></a>');
+        layero_opened.css('z-index',Win10._countTask+813);
         $("#win10_btn_group_middle").append(btn);
         btn.click(function () {
             var index = $(this).attr('index');
@@ -261,7 +256,7 @@ var Win10 = {
                 //置顶窗口
                 var max_zindex=0;
                 $(".win10-open-iframe").each(function () {
-                    z=$(this).css('z-index');
+                    z=parseInt($(this).css('z-index'));
                     $(this).css('z-index',z-1);
                     if(z>max_zindex){max_zindex=z;}
                 });
