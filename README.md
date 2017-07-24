@@ -1,11 +1,15 @@
 ## WIN10-UI
 
-Win10-ui是一款win10风格的后台UI，让你轻松搭建一个别具一格的后台界面。
+Win10-ui是一款win10风格的后台UI，让您轻松搭建一个别具一格的后台界面。
 
  | [官网](http://win10ui.yuri2.cn/) 
  | [demo](http://win10ui.yuri2.cn/src/demo.html) 
  | [github](https://github.com/yuri2peter/win10-ui)
  | [下载](https://github.com/yuri2peter/win10-ui/archive/master.zip)
+
+## 版本
+
+v1.0.170724
 
 ## 预览
  ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-5.png)
@@ -141,7 +145,7 @@ Win10-ui是一款win10风格的后台UI，让你轻松搭建一个别具一格�
 
 ## 更新日志
 
-* 2017/7/24 [优化]去除了窄屏幕切换菜单时偶尔产生的闪烁
+* 2017/7/24 [优化]去除了窄屏幕切换菜单时偶尔产生的闪烁。微调桌面图标样式，变得更加紧凑。
 * 2017/7/21 [增强]简单的中英双语支持。对话框样式微调。磁贴固定宽度为44px/格(固定的尺寸比较好布局)。
-* 2017/7/20 [修复]jq3.1有bug(真实坑爹)，换为jq2.2.4
+* 2017/7/20 [修复]jq3.1有bug(真是坑爹)，换为jq2.2.4
 * 2017/7/19 [增强]全局默认不允许鼠标选择文字；优化url打开函数，自动补全http协议头

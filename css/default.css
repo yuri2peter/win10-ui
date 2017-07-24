@@ -350,7 +350,7 @@ body {
     width: 80px;
     overflow: hidden;
     cursor: pointer;
-    padding: 10px;
+    padding: 0;
     position: absolute;
 }
 

@@ -50,12 +50,12 @@ var Win10 = {
         $("#win10-msg-nof").removeClass('fa-commenting-o');
     },
     renderShortcuts:function () {
-        var h=parseInt($("#win10 #win10-shortcuts")[0].offsetHeight/110);
+        var h=parseInt($("#win10 #win10-shortcuts")[0].offsetHeight/100);
         var x=0,y=0;
         $("#win10 #win10-shortcuts .shortcut").each(function () {
             $(this).css({
-                left:x*110,
-                top:y*100,
+                left:x*82+10,
+                top:y*100+10,
             });
             y++;
             if(y>=h){
