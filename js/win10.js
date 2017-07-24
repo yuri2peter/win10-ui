@@ -402,7 +402,7 @@ var Win10 = {
                 }else{
                     setTimeout(function () {
                         obj.addClass(class_name);
-                    },500);
+                    },450);
                     obj.addClass('animated slideOutLeft');
                     obj.removeClass('animated slideInLeft');
                 }
