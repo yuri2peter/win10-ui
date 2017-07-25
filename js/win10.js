@@ -248,6 +248,19 @@ var Win10 = {
         Win10.settop(layero_opened);
         layero_opened.find('.layui-layer-setwin').prepend('<a class="win10-btn-change-url" index="' + index + '" href="#"><span class="fa fa-chain"></span></a><a class="win10-btn-refresh" index="' + index + '" href="#"><span class="fa fa-refresh"></span></a>');
         layero_opened.css('z-index',Win10._countTask+813);
+        layero_opened.find('.layui-layer-setwin .layui-layer-max').click(function () {
+            setTimeout(function () {
+                var height=layero_opened.css('height');
+                height=parseInt(height.replace('px',''));
+                console.log([height,document.body.clientHeight]);
+                if (height>=document.body.clientHeight){
+                   layero_opened.css('height',height-40);
+                   layero_opened.find('.layui-layer-content').css('height',height-83);
+                   layero_opened.find('.layui-layer-content iframe').css('height',height-83);
+                }
+            },300);
+
+        });
         $("#win10_btn_group_middle").append(btn);
         btn.click(function () {
             var index = $(this).attr('index');
