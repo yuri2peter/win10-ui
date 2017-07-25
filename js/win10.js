@@ -483,12 +483,12 @@ var Win10 = {
         document.body.onbeforeunload = function(){
             window.event.returnValue = Win10.lang( '系统可能不会保存您所做的更改','The system may not save the changes you have made.');
         };
-        //预处理左侧菜单
-        Win10.buildList();
-        Win10._startAnimate();
-        Win10.renderShortcuts();
-        Win10.renderMenuBlocks();
-        Win10._showShotcut();
+        Win10.buildList();//预处理左侧菜单
+        Win10._startAnimate();//动画处理
+        Win10.renderShortcuts();//渲染图标
+        $("#win10-shortcuts").removeClass('shortcuts-hidden');//显示图标
+        Win10.renderMenuBlocks();//渲染磁贴
+        Win10._showShotcut();//显示磁贴
         //窗口改大小，重新渲染
         $(window).resize(function() {
             Win10.renderShortcuts();

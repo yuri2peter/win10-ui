@@ -346,6 +346,10 @@ body {
     height: calc(100% - 40px);
     position: relative;
 }
+
+#win10 #win10-shortcuts.shortcuts-hidden .shortcut{display: none}
+
+
 #win10 #win10-shortcuts .shortcut {
     width: 80px;
     overflow: hidden;
