@@ -8,6 +8,38 @@ var Win10 = {
     _animated_liveness:0,
     _switchMenuTooHurry:false,
     _lang:'unknown',
+    _iframeOnClick :{
+        resolution: 200,
+        iframes: [],
+        interval: null,
+        Iframe: function() {
+            this.element = arguments[0];
+            this.cb = arguments[1];
+            this.hasTracked = false;
+        },
+        track: function(element, cb) {
+            this.iframes.push(new this.Iframe(element, cb));
+            if (!this.interval) {
+                var _this = this;
+                this.interval = setInterval(function() { _this.checkClick(); }, this.resolution);
+            }
+        },
+        checkClick: function() {
+            if (document.activeElement) {
+                var activeElement = document.activeElement;
+                for (var i in this.iframes) {
+                    if (activeElement === this.iframes[i].element) { // user is in this Iframe
+                        if (this.iframes[i].hasTracked == false) {
+                            this.iframes[i].cb.apply(window, []);
+                            this.iframes[i].hasTracked = true;
+                        }
+                    } else {
+                        this.iframes[i].hasTracked = false;
+                    }
+                }
+            }
+        }
+    },
     _handleReady:function () {},
     _hideShotcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");
@@ -295,6 +327,9 @@ var Win10 = {
                 // layero.find('.layui-layer-resize').click();
             }
         });
+        Win10._iframeOnClick.track(layero_opened.find('iframe:first')[0], function() {
+            Win10.settop(layero_opened);
+            Win10.checkTop(); });
         this.menuClose();
         this.commandCenterClose();
         return index;
@@ -444,8 +479,8 @@ var Win10 = {
                 iframe.attr('src', value);
             });
         });
-        $(document).on('mousedown','.win10-open-iframe .layui-layer-title',function () {
-            var layero=$(this).parent();
+        $(document).on('mousedown','.win10-open-iframe',function () {
+            var layero=$(this);
             Win10.settop(layero);
             Win10.checkTop();
         });
