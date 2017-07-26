@@ -3,7 +3,7 @@
 Win10-ui是一款win10风格的后台UI，让您轻松搭建一个别具一格的后台界面。
 
  | [官网](http://win10ui.yuri2.cn/) 
- | [demo](http://win10ui.yuri2.cn/src/demo.html) 
+ | [demo](http://win10ui.yuri2.cn/src/demo.php) 
  | [github](https://github.com/yuri2peter/win10-ui)
  | [下载](https://github.com/yuri2peter/win10-ui/archive/master.zip)
 
@@ -129,7 +129,6 @@ v1.0.170726
 
 ## 未来开发计划
 
-* 多语言支持
 * 可拖拽磁贴
 * 多主题切换
 * 日历、音乐播放器等小组件
