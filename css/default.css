@@ -126,6 +126,7 @@ body {
     width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
+    text-align: left;
 }
 
 /*#btn_group_middle .btn:hover .btn_title{*/
@@ -530,15 +531,24 @@ body {
     cursor: pointer;
 }
 
+.win10-open-iframe{
+    background-color: transparent;
+}
+
+.win10-open-iframe .layui-layer-content{
+    background-color: white;
+}
+
 .win10-open-iframe .layui-layer-title{
-    background-color: rgb(223, 227, 222);
+    border: 1px solid grey;
+    box-sizing: border-box;
+    background-color: rgb(39, 46, 39);
     padding-right: 160px;
+    color: white;
 }
 .win10-open-iframe.hide{
     display: none;
 }
-
-
 .win10-btn_refresh{
     float: right;
 }
@@ -548,16 +558,58 @@ body {
 
 .win10-btn-refresh>span,.win10-btn-change-url>span{
     font-size: 16px !important;
-    color: rgb(46,65,60);
+    color: rgb(255, 255, 255);
 }
 .win10-btn-refresh>span:hover,.win10-btn-change-url>span:hover{
     color: rgb(45,147,201);
+}
+
+.win10-open-iframe .layui-layer-min cite{display: none;}
+.win10-open-iframe .layui-layer-max:hover{background:none}
+.win10-open-iframe .layui-layer-max.layui-layer-maxmin{background:none}
+.win10-open-iframe .layui-layer-close1:hover{opacity: 1}
+
+.win10-open-iframe .layui-layer-min::before{
+    content:"\f2d1";
+    color: white;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+.win10-open-iframe .layui-layer-max::before{
+    content:"\f2d0";
+    color: white;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+.win10-open-iframe .layui-layer-maxmin.layui-layer-max::before{
+    content:"\f2d2";
+    color: white;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+
+.win10-open-iframe .layui-layer-close::before{
+    content:"\f2d3";
+    color: white;
+    font: normal normal normal 14px/1 FontAwesome;
+}
+.win10-open-iframe .layui-layer-close:hover::before{color: red}
+.win10-open-iframe .layui-layer-max:hover::before{color: rgb(45,147,201)  }
+.win10-open-iframe .layui-layer-min:hover::before{color: rgb(45,147,201)  }
+
+.win10-open-iframe .layui-layer-min,.layui-layer-close,.layui-layer-max{
+    text-decoration: none;
 }
 
 .win10-layer-open-browser textarea{
     margin: 20px;
     outline: none;
     resize: none;
+}
+
+img.win10-btn-icon{
+    width: 20px;
+    position: relative;
+    top:5px ;
 }
 
 @media screen and (max-width:768px){
