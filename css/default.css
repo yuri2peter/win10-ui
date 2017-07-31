@@ -9,7 +9,7 @@ body {
     overflow: hidden;
 }
 
-#win10-login *,#win10 *{
+#win10 *{
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
@@ -25,15 +25,6 @@ body {
     z-index: -1;
     top:0;
     left:0;
-}
-
-#win10-login.animated{
-    -webkit-animation-duration: 0.5s;
-    animation-duration: 0.5s;
-}
-
-#win10-login.top{
-    z-index: 20170714;
 }
 
 #win10 {
@@ -68,7 +59,7 @@ body {
     position: fixed;
     bottom: 0;
     height: 40px;
-    background-color: rgba(39, 46, 39, 0.81);
+    background-color: rgba(19, 23, 28, 0.9);
     z-index: 19930813;
 }
 
@@ -88,7 +79,7 @@ body {
 }
 
 #win10 .btn_group .btn:hover {
-    background-color: rgba(107, 136, 104, 0.6);
+    background-color: rgba(106, 105, 100, 0.71);
     cursor: pointer;
 }
 
@@ -100,9 +91,8 @@ body {
 
 #win10_btn_group_middle{
     float: left;
-    width:calc(100% - 410px);
+    width:calc(100% - 240px);
     overflow: auto;
-    padding: 4px auto;
 }
 #win10_btn_group_middle .btn_close{
     position: absolute;
@@ -110,9 +100,6 @@ body {
     width: 20px;
     text-align: center;
     color: transparent;
-}
-#win10_btn_group_middle .btn{
-    position: relative;
 }
 #win10_btn_group_middle .btn:hover .btn_close{
     color: rgba(131, 168, 157, 0.71);
@@ -127,10 +114,11 @@ body {
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: left;
+    white-space: nowrap;
 }
 
 /*#btn_group_middle .btn:hover .btn_title{*/
-    /*width: calc(100% - 20px);*/
+/*width: calc(100% - 20px);*/
 /*}*/
 
 #win10_btn_group_middle::-webkit-scrollbar {
@@ -179,7 +167,7 @@ body {
 #win10-menu {
     position: fixed;
     bottom: 41px;
-    background-color: rgba(39, 46, 39, 0.81);
+    background-color: rgba(19,23,28,0.81);
     height: 60%;
     width: 75%;
     max-width: 880px;
@@ -258,7 +246,7 @@ body {
     line-height: 40px;
     font-size: 26px;
     float: left;
-    margin-right: 10px;
+    margin-right: 0.5em;
 }
 
 #win10-menu .list .sub-item{
@@ -267,7 +255,7 @@ body {
 }
 
 #win10-menu .list .item:hover,.sub-item:hover{
-    background-color: rgba(107, 136, 104, 0.39);
+    background-color: rgba(72,72,72,0.58);
     cursor: pointer;
 }
 
@@ -290,8 +278,6 @@ body {
 #win10-menu-switcher:active{
     background-color: rgba(92, 109, 92, 0.81);
 }
-
-
 
 #win10-menu .menu_group {
     float: left;
@@ -350,7 +336,6 @@ body {
 
 #win10 #win10-shortcuts.shortcuts-hidden .shortcut{display: none}
 
-
 #win10 #win10-shortcuts .shortcut {
     width: 80px;
     overflow: hidden;
@@ -360,7 +345,7 @@ body {
 }
 
 #win10 #win10-shortcuts .shortcut:hover {
-    background-color: rgba(31, 70, 97, 0.73);
+    background-color: rgba(255, 255, 255, 0.11);
 }
 
 #win10 #win10-shortcuts .shortcut .icon {
@@ -371,6 +356,11 @@ body {
     color: grey;
     box-sizing: border-box;
     margin-bottom: 5px;
+    margin-top: 5px;
+    text-align: center;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #win10 #win10-shortcuts .shortcut .icon>img{
@@ -383,6 +373,7 @@ body {
     font-size: 12px;
     text-align: center;
     line-height: 18px;
+    margin-bottom: 5px;
 }
 
 #win10_command_center {
@@ -390,7 +381,7 @@ body {
     right: 0;
     bottom: 41px;
     width: 350px;
-    background-color: rgba(39, 46, 39, 0.81);
+    background-color: rgba(19,23,28,0.81);
     height: calc(100% - 42px);
     transition: all 0.5s;
     overflow-x: hidden;
@@ -512,8 +503,8 @@ body {
     float: left;
     box-sizing: border-box;
     height: inherit;
-    width: 140px;
-    border-bottom: 4px solid rgba(149, 189, 144, 0.6);
+    max-width: 140px;
+    border-bottom:4px solid #707070;
     line-height: 40px;
     color: white;
     text-align: center;
@@ -521,10 +512,11 @@ body {
     word-break: keep-all;
     padding: 0 10px;
     margin-right: 1px;
+    position: relative;
 }
 
 #win10_btn_group_middle .btn.active{
-    background-color: rgba(107, 136, 104, 0.39);
+    background-color: #3B3D3F;
 }
 
 #win10_btn_group_middle .btn:hover{
@@ -533,6 +525,7 @@ body {
 
 .win10-open-iframe{
     background-color: transparent;
+    border: 1px solid #323232;
 }
 
 .win10-open-iframe .layui-layer-content{
@@ -540,9 +533,8 @@ body {
 }
 
 .win10-open-iframe .layui-layer-title{
-    border: 1px solid grey;
     box-sizing: border-box;
-    background-color: rgb(39, 46, 39);
+    background-color: rgba(49, 49, 50, 0.94);
     padding-right: 160px;
     color: white;
 }
@@ -560,14 +552,15 @@ body {
     font-size: 16px !important;
     color: rgb(255, 255, 255);
 }
-.win10-btn-refresh>span:hover,.win10-btn-change-url>span:hover{
-    color: rgb(45,147,201);
-}
 
 .win10-open-iframe .layui-layer-min cite{display: none;}
-.win10-open-iframe .layui-layer-max:hover{background:none}
-.win10-open-iframe .layui-layer-max.layui-layer-maxmin{background:none}
-.win10-open-iframe .layui-layer-close1:hover{opacity: 1}
+.win10-open-iframe .layui-layer-max:hover{background-image:none}
+.win10-open-iframe .layui-layer-max,.layui-layer-maxmin{background:none}
+.win10-open-iframe .layui-layer-setwin a.layui-layer-close1:hover{
+    background:red;
+    color: #fff ;
+    opacity: 1;
+}
 
 .win10-open-iframe .layui-layer-min::before{
     content:"\f2d1";
@@ -589,12 +582,9 @@ body {
 
 .win10-open-iframe .layui-layer-close::before{
     content:"\f2d3";
-    color: white;
+    color: #fff;
     font: normal normal normal 14px/1 FontAwesome;
 }
-.win10-open-iframe .layui-layer-close:hover::before{color: red}
-.win10-open-iframe .layui-layer-max:hover::before{color: rgb(45,147,201)  }
-.win10-open-iframe .layui-layer-min:hover::before{color: rgb(45,147,201)  }
 
 .win10-open-iframe .layui-layer-min,.layui-layer-close,.layui-layer-max{
     text-decoration: none;
@@ -605,13 +595,69 @@ body {
     outline: none;
     resize: none;
 }
+/*右键菜单*/
+.right-menu { position: absolute; width: 150px; height: auto; background-color: rgb(255, 255, 255); border: #CCC 1px solid; display: none; border-radius: 5px; z-index: 99999999; }
+.right-menu ul { margin: 0px; padding: 0px; }
+.right-menu ul li { list-style: none; line-height: 30px; height: 30px; margin: 3px 0px; padding: 0px; font-size: 13px; }
+.right-menu ul li a { text-decoration: none; display: block; font-family: 微软雅黑; padding: 0px 5px 0 30px; height: 100%; color: #333; outline: none; }
+.right-menu ul li a:hover { background-color: #DDD; }
+.right-menu ul hr { margin: 1px 0px; height: 0px; border: 0px; border-bottom: #CCC 1px solid; }
+/*块级按钮*/
+.win10-open-iframe .layui-layer-ico{background-image:none;}
+.win10-open-iframe .layui-layer-setwin {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    font-size: 0;
+    line-height: 40px;
+    height: 40px;
+}
+.win10-open-iframe .layui-layer-setwin a {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    font-size: 13px;
+    text-align: center;
+    overflow: hidden;
+}
+.win10-open-iframe .layui-layer-setwin a:hover {
+    background: #5d5d5d;
+}
 
-img.win10-btn-icon{
+#win10 #win10-shortcuts .shortcut .icon>.icon{
+    display: block;
+    width: 50px;
+    height: 50px;
+    margin: 0 auto;
+    line-height: 50px;
+    font-size: 37px;
+    color: #fff;
+}
+.win10-open-iframe .layui-layer-title .icon ,#win10_btn_group_middle .btn_title .icon{
+    font-size: 15px;
+    padding: 1px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+    display: inline-block;
+    border-radius: 3px;
+    text-align: center;
+    margin-right: 0.5em;
+}
+.win10-open-iframe .layui-layer-title img.icon,#win10_btn_group_middle .btn_title img.icon{
     width: 20px;
     position: relative;
     top:5px ;
+    margin-right: 0.5em;
 }
-
+/*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/
+.black-green{background:#009688}
+.green{background:#5FB878}
+.black{background:#393D49}
+.blue{background:#1E9FFF}
+.orange{background:#F7B824}
+.red{background:#FF5722}
+.dark{background:#2F4056}
 @media screen and (max-width:768px){
     #win10-menu{
         width:calc(100% - 10px);
@@ -633,18 +679,13 @@ img.win10-btn-icon{
         height: 100%;
         width: 40px;
         overflow: hidden;
-        font-size: 12px;
+        font-size: 16px;
     }
     #win10_btn_group_right .btn {
         height: 100%;
         min-width: 4px;
         padding: 0 10px;
-        font-size: 12px!important;
-    }
-    #win10_btn_group_middle .btn{
-        font-size: 10px;
-        width: 60px;
-        padding: 0 2px;
+        font-size: 16px!important;
     }
     #win10_btn_show_desktop {
         border-left: grey 1px solid;
@@ -656,7 +697,10 @@ img.win10-btn-icon{
         max-width:100px;
     }
     #win10_btn_group_middle{
-        width:calc(100% - 150px);
+        width:calc(100% - 160px);
+    }
+    #win10_btn_group_middle .btn{
+        padding: 0 3px;
     }
     #win10_btn_group_right{
         max-width:150px;
@@ -699,5 +743,8 @@ img.win10-btn-icon{
     }
     #win10_btn_group_middle .btn_close{
         display: none;
+    }
+    .win10-open-iframe .layui-layer-setwin a {
+        width: 32px;
     }
 }

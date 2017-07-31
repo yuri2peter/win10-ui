@@ -19,6 +19,14 @@
     </style>
     <script>
         Win10.onReady(function () {
+
+            //设置壁纸
+            Win10.setBgUrl({
+                main:'./img/wallpapers/main.jpg',
+                mobile:'./img/wallpapers/mobile.jpg',
+                login:'./img/wallpapers/login.jpg'
+            });
+
             Win10.setAnimated([
                 'animated flip',
                 'animated bounceIn',
@@ -31,19 +39,17 @@
 </head>
 <body>
 <div id="win10">
-    <img id="win10_img_loader1" class="img-loader" src="./img/wallpapers/windows.jpg">
-    <img id="win10_img_loader2" class="img-loader" src="./img/wallpapers/login.jpg">
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
-            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'win10-btn-icon\' src=\'img/icon/win10.png\'/> Win10-UI官网')">
+            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'img/icon/win10.png\'/>Win10-UI官网')">
                 <div class="icon"><img src="img/icon/win10.png"/></div>
                 <div class="title">Win10-UI官网</div>
             </div>
-            <div class="shortcut" onclick="Win10.openUrl('https://yuri2.cn','<img class=\'win10-btn-icon\' src=\'img/icon/blogger.png\'/> 尤里2号的博客')">
+            <div class="shortcut" onclick="Win10.openUrl('https://yuri2.cn','<img class=\'icon\' src=\'img/icon/blogger.png\'/>尤里2号的博客')">
                 <div class="icon"><img src="img/icon/blogger.png"/></div>
                 <div class="title">Yuri2's Blog</div>
             </div>
-            <div class="shortcut" onclick="Win10.openUrl('./doc.html','<img class=\'win10-btn-icon\' src=\'img/icon/doc.png\'/> 开发文档')">
+            <div class="shortcut" onclick="Win10.openUrl('./doc.html','<img class=\'icon\' src=\'img/icon/doc.png\'/>开发文档')">
                 <div class="icon"><img src="img/icon/doc.png"/></div>
                 <div class="title">开发文档</div>
             </div>
@@ -51,7 +57,7 @@
                 <div class="icon"><img src="img/icon/github.png"/></div>
                 <div class="title">github</div>
             </div>
-            <div class="shortcut" onclick="Win10.openUrl('https://www.oschina.net/p/win10-ui','<img class=\'win10-btn-icon\' src=\'img/icon/kyzg.png\'/> 开源中国（求支持~）')">
+            <div class="shortcut" onclick="Win10.openUrl('https://www.oschina.net/p/win10-ui','<img class=\'icon\' src=\'img/icon/kyzg.png\'/>开源中国（求支持~）')">
                 <div class="icon"><img src="img/icon/kyzg.png"/></div>
                 <div class="title">开源中国</div>
             </div>
@@ -59,34 +65,20 @@
                 <div class="icon"><img src="img/icon/download.png"/></div>
                 <div class="title">快速获取</div>
             </div>
+            <div class="shortcut" onclick='Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon black-green\"></i>字体图标")'>
+                <div class="icon black-green"><i class="fa fa-camera-retro icon"></i></div>
+                <div class="title">字体图标</div>
+        </div>
         </div>
     </div>
     <div id="win10-menu" class="hidden">
         <div class="list win10-menu-hidden animated animated-slideOutLeft">
             <div class="item"><span class=" icon fa fa-wrench fa-fw"></span><span>API测试</span></div>
-            <div class="sub-item" onclick="Win10.openUrl('https://yuri2.cn','测试窗口')">打开网页</div>
-            <div class="sub-item" onclick="Win10.logout()">登录界面</div>
+            <div class="sub-item" onclick="Win10.openUrl('./child.html','子页')">父子页沟通</div>
             <div class="sub-item" onclick="Win10.commandCenterOpen()">打开消息中心</div>
-            <div class="sub-item" onclick="Win10.newMsg('API测试','通过API可以发送消息至消息中心，自定义标题与内容')">发送消息</div>
+            <div class="sub-item" onclick="Win10.newMsg('API测试','通过API可以发送消息至消息中心，自定义标题与内容(点击我试试)',function() {alert('click')})">发送带回调的消息</div>
             <div class="sub-item" onclick="Win10.menuClose()">关闭菜单</div>
-            <div class="item" onclick="
-layer.open({
-    type:1,
-    closeBtn: 1, //不显示关闭按钮
-    anim: 2,
-    skin: 'layui-layer-molv',
-    title:'win10-ui v1.0',
-    shadeClose: true, //开启遮罩关闭
-    area: ['420px', '240px'], //宽高
-    content: '<div style=\'padding: 10px\'>' +
-     '<p>支持组件:layer、jquery、animated.css、font-awesome</p>' +
-     '<p>尤里2号©版权所有</p>' +
-     '<p>作者邮箱:yuri2peter@qq.com</p>' +
-      '</div>'
-  });
-            "><span class=" icon fa fa-star fa-fw"></span>关于
-            </div>
-            <div class="item" onclick="Win10.logout()"><span class=" icon fa fa-user-o fa-fw"></span>注销</div>
+            <div class="item" onclick="Win10.aboutUs()"><span class=" icon fa fa-star fa-fw"></span>关于</div>
             <div class="item" onclick="
 layer.confirm('确认要关闭本页吗?', {icon: 3, title:'提示'}, function(index){
   Win10.exit();
@@ -202,63 +194,6 @@ layer.confirm('确认要关闭本页吗?', {icon: 3, title:'提示'}, function(i
             </div>
             <div class="btn" id="win10_btn_command"><span id="win10-msg-nof" class="fa fa-comment-o"></span></div>
             <div class="btn" id="win10_btn_show_desktop"></div>
-        </div>
-    </div>
-
-    <!--    自定义登录页面-->
-    <style>
-        #win10-login-box {
-            width: 40%;
-            overflow: hidden;
-            margin: 0 auto;
-            min-width: 360px;
-        }
-
-        .win10-login-box-square {
-            width: 35%;
-            margin: 0 auto;
-            border-radius: 50%;
-            background-color: darkgray;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .win10-login-box-square::after {
-            content: "";
-            display: block;
-            padding-bottom: 100%;
-        }
-
-        .win10-login-box-square .content {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-        }
-
-        #win10-form-login {
-            width: 100%;
-        }
-
-        #win10-form-login input.text {
-            width: 50%;
-            display: block;
-            border: 0;
-            margin: 0 auto;
-            line-height: 36px;
-            font-size: 20px;
-            padding: 0 1em;
-        }
-    </style>
-    <div id="win10-login" class=""> <!-- 为#win10-login 添加class : top 默认显示登录页 -->
-        <div style="height: 10%;min-height: 120px"></div>
-        <div id="win10-login-box">
-            <div class="win10-login-box-square">
-                <img src="./img/avatar.gif" class="content"/>
-            </div>
-            <p style="font-size: 30px;color: white;text-align: center">游客</p>
-            <form id="win10-form-login" action="#" onsubmit="Win10.login();return false;">
-                <input class="text" type="password">
-            </form>
         </div>
     </div>
 </div>

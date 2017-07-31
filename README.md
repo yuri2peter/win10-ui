@@ -120,8 +120,8 @@ v1.0.170728
 * buildList() 重新预处理菜单列表(可用与动态添加或删除了菜单项之后)
 * newMsg(title, content) 发送一个消息提醒
 * isSmallScreen() 如果屏幕宽度小于768px返回true，否则返回false
-* setBackgroundImg(img_url) 指定桌面背景图片
-* setLoginImg(img_url) 指定登录界面背景图片
+* _setBackgroundImg(img_url) 指定桌面背景图片
+* _setLoginImg(img_url) 指定登录界面背景图片
 * setAnimated(animated_classes,animated_liveness) 用css的类来设置磁贴动画。animated_liveness设置动画的触发概率(0~1)。animated_classes中存放css class数组，如``['class1','class2','class3-1 class3-2']``。磁贴将随机选择一个动画来播放（最多3秒）。
 * exit() 立即关闭整个页面
 * login() 隐藏登录界面

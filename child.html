@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>子页测试</title>
+    <script src="./js/win10.child.js"></script>
+    <style>
+        .btn{
+            margin: 20px;
+            width: 160px;
+            height: 40px;
+            line-height: 40px;
+            font-size: 16px;
+            color: white;
+            background-color: #2D93CA;
+            border-radius: 3px;
+            transition: all 0.5s;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn:hover{
+            background-color: #256d95;
+        }
+    </style>
+    <script>
+        function f1() {
+            Win10_child.newMsg('子页的问候','这是从iframe页调用APi发送的消息哦');
+        }
+    </script>
+</head>
+<body>
+    <div class="btn" onclick="f1()">子页给父页发消息</div>
+</body>
+</html>

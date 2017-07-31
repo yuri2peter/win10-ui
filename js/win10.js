@@ -2,6 +2,10 @@
  * Created by Yuri2 on 2017/7/10.
  */
 var Win10 = {
+    _bgs:{
+        main:'',
+        mobile:'',
+    },
     _countTask: 0,
     _newMsgCount:0,
     _animated_classes:[],
@@ -40,6 +44,12 @@ var Win10 = {
             }
         }
     },
+    _renderBar:function () {
+      //调整任务栏项目的宽度
+        if(this._countTask<=0){return;} //防止除以0
+        var btns=$("#win10_btn_group_middle>.btn");
+        btns.css('width',('calc('+(1/this._countTask*100)+'% - 1px )'))
+    },
     _handleReady:function () {},
     _hideShotcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");
@@ -50,6 +60,54 @@ var Win10 = {
         var that=$("#win10 #win10-shortcuts .shortcut");
         that.removeClass('animated flipOutX');
         that.addClass('animated flipInX');
+    },
+    _checkBgUrls:function () {
+        var loaders=$('#win10>.img-loader');
+        var flag=false;
+        if(Win10.isSmallScreen()){
+                if(Win10._bgs.mobile){
+                    loaders.each(function () {
+                        var loader=$(this);
+                        if(loader.attr('src')===Win10._bgs.mobile && loader.hasClass('loaded')){
+                            Win10._setBackgroundImg(Win10._bgs.mobile);
+                            flag=true;
+                        }
+                    });
+                    if(!flag){
+                        //没找到加载完毕的图片
+                        var img=$('<img class="img-loader" src="'+Win10._bgs.mobile+'" />');
+                        $('#win10').append(img);
+                        Win10._onImgComplete(img[0],function () {
+                            img.addClass('loaded');
+                            Win10._setBackgroundImg(Win10._bgs.mobile);
+                        })
+                    }
+                }
+            }else{
+                if(Win10._bgs.main){
+                    loaders.each(function () {
+                        var loader=$(this);
+                        if(loader.attr('src')===Win10._bgs.main && loader.hasClass('loaded')){
+                            Win10._setBackgroundImg(Win10._bgs.main);
+                            flag=true;
+                        }
+                    });
+                    if(!flag){
+                        //没找到加载完毕的图片
+                        var img=$('<img class="img-loader" src="'+Win10._bgs.main+'" />');
+                        $('#win10').append(img);
+                        Win10._onImgComplete(img[0],function () {
+                            img.addClass('loaded');
+                            Win10._setBackgroundImg(Win10._bgs.main);
+                        })
+                    }
+                }
+        }
+
+    },
+    setBgUrl:function (bgs) {
+        this._bgs=bgs;
+        this._checkBgUrls();
     },
     menuClose: function () {
         $("#win10-menu").removeClass('opened');
@@ -129,12 +187,17 @@ var Win10 = {
             this.commandCenterClose();
         }
     },
-    newMsg: function (title, content) {
+    newMsg: function (title, content,handle_click) {
         var e = $('<div class="msg">' +
             '<div class="title">' + title + '<span class="btn_close_msg fa fa-close"></span></div>' +
             '<div class="content">' + content + '</div>' +
             '</div>');
         $("#win10_command_center .msgs").prepend(e);
+        e.find('.content:first').click(function () {
+            if(handle_click){
+                handle_click(e);
+            }
+        });
         layer.tips(Win10.lang('新消息:','New message:')+title, '#win10_btn_command', {
             tips: [1, '#3c6a4a'],
             time: 3000
@@ -186,11 +249,8 @@ var Win10 = {
             document.msExitFullscreen();
         }
     },
-    setBackgroundImg:function (img) {
+    _setBackgroundImg:function (img) {
         $('#win10').css('background-image','url('+img+')')
-    },
-    setLoginImg:function (img) {
-        $('#win10-login').css('background-image','url('+img+')')
     },
     settop:function (layero) {
         if(!isNaN(layero)){
@@ -233,7 +293,12 @@ var Win10 = {
         })
     },
     openUrl: function (url, title,max) {
-        this._countTask++;
+        if(this._countTask>12){
+            layer.msg("您打开的太多了，歇会儿吧~");
+            return false;
+        }else{
+            this._countTask++;
+        }
         url=url.replace(/(^\s*)|(\s*$)/g, "");
         var preg=/^(https?:\/\/|\.\.?\/|\/\/)/;
         if(!preg.test(url)){
@@ -245,13 +310,17 @@ var Win10 = {
         if (!title) {
             title = url;
         }
-        var isFirst = true; //是否是第一次（如果iframe嵌套，success会触发多次）
         if (this.isSmallScreen() || max) {
             area = ['100%', (document.body.clientHeight - 40) + 'px'];
             offset = ['0', '0'];
         } else {
             area = ['80%', '80%'];
-            offset = [(this._countTask % 10) * 20 + 'px', (this._countTask % 10) * 20 + 100 + 'px'];
+            var topset, leftset;
+            topset = parseInt($(window).height());
+            topset = (topset - (topset * 0.8)) / 2 - 41;
+            leftset = parseInt($(window).width());
+            leftset = (leftset - (leftset * 0.8)) / 2 - 120;
+            offset = [Math.round((this._countTask % 10 * 20) + topset) + 'px', Math.round((this._countTask % 10 * 20 + 100) + leftset) + 'px'];
         }
         var index = layer.open({
             type: 2,
@@ -267,12 +336,17 @@ var Win10 = {
             cancel: function (index, layero) {
                 $("#win10_" + index).remove();
                 Win10.checkTop();
+                Win10._countTask--;//回退countTask数
+                Win10._renderBar();
             },
             min: function (layero) {
                 layero.hide();
                 $("#win10_" + index).removeClass('show');
                 Win10.checkTop();
                 return false;
+            },
+            full:function (layero) {
+                layero.find('.layui-layer-min').css('display','inline-block');
             },
         });
         $('#win10_btn_group_middle .btn.active').removeClass('active');
@@ -294,6 +368,7 @@ var Win10 = {
 
         });
         $("#win10_btn_group_middle").append(btn);
+        Win10._renderBar();
         btn.click(function () {
             var index = $(this).attr('index');
             var layero = Win10.getLayeroByIndex(index);
@@ -334,6 +409,12 @@ var Win10 = {
         this.commandCenterClose();
         return index;
     },
+    closeAll: function() {
+        $(".win10-open-iframe").remove();
+        $("#win10_btn_group_middle").html("");
+        Win10._countTask = 0;
+        Win10._renderBar();
+    },
     setAnimated:function (animated_classes,animated_liveness) {
         this._animated_classes=animated_classes;
         this._animated_liveness=animated_liveness;
@@ -342,20 +423,25 @@ var Win10 = {
         document.body.onbeforeunload = function(){};
         window.close();
     },
-    login:function () {
-        $('#win10-login').removeClass('animated zoomIn');
-        $('#win10-login').addClass('animated zoomOut');
-        setTimeout(function () {
-            $('#win10-login').removeClass('top');
-        },500)
-    },
-    logout:function () {
-        $('#win10-login').addClass('top');
-        $('#win10-login').removeClass('animated zoomOut');
-        $('#win10-login').addClass('animated zoomIn');
-    },
     lang:function (cn,en) {
         return this._lang==='zh-cn'||this._lang==='zh-tw'?cn:en;
+    },
+    aboutUs: function() {
+        //关于我们
+        layer.open({
+            type: 1,
+            closeBtn: 1, //不显示关闭按钮
+            anim: 2,
+            skin: 'layui-layer-molv',
+            title: 'win10-ui v1.1.170731',
+            shadeClose: true, //开启遮罩关闭
+            area: ['420px', '240px'], //宽高
+            content: '<div style=\'padding: 10px\'>' +
+            '<p>支持组件:layer、jquery、animated.css、font-awesome</p>' +
+            '<p>尤里2号©版权所有</p>' +
+            '<p>作者邮箱:yuri2peter@qq.com</p>' +
+            '</div>'
+        });
     },
     _startAnimate:function () {
         setInterval(function () {
@@ -383,7 +469,7 @@ var Win10 = {
         var timer = setInterval(function() {
             if (img.complete) {
                 callback(img);
-                clearInterval(timer)
+                clearInterval(timer);
             }
         }, 50)
     },
@@ -488,6 +574,8 @@ var Win10 = {
             var index = $(this).parent().attr('index') ;
             Win10.getLayeroByIndex(index).remove();
             $(this).parent().remove();
+            Win10._countTask--;
+            Win10._renderBar();
         });
         $('#win10-menu .list').on('click','.item',function () {
             var e=$(this);
@@ -520,13 +608,6 @@ var Win10 = {
             var mins=myDate.getMinutes();if (mins<10){mins='0'+mins}
             $("#win10_btn_time").html(hours+':'+mins+'<br/>'+year+'/'+month+'/'+date);
         },1000);
-        //处理背景加载
-        this._onImgComplete($("#win10_img_loader1")[0],function (img) {
-            Win10.setBackgroundImg(img.src);
-        });
-        this._onImgComplete($("#win10_img_loader2")[0],function (img) {
-            Win10.setLoginImg(img.src);
-        });
         //离开前警告
         document.body.onbeforeunload = function(){
             window.event.returnValue = Win10.lang( '系统可能不会保存您所做的更改','The system may not save the changes you have made.');
@@ -540,6 +621,7 @@ var Win10 = {
         //窗口改大小，重新渲染
         $(window).resize(function() {
             Win10.renderShortcuts();
+            Win10._checkBgUrls();
         });
         //细节
         $(document).on('focus',".win10-layer-open-browser textarea",function () {
