@@ -103,8 +103,8 @@ v1.1.170731（文档更新中）
 ```
 
 > 所有方法都需要加``Win10.``前缀。
-* **setBgUrl(bgs) ** 设置背景图片 ``Win10.setBgUrl({main:'宽屏壁纸url',mobile:'竖屏壁纸url',})``
-* **openUrl(url,title,max) ** 打开一个子窗口,参数列表：url,标题，是否默认最大化
+* setBgUrl(bgs) 设置背景图片 ``Win10.setBgUrl({main:'宽屏壁纸url',mobile:'竖屏壁纸url',})``
+* openUrl(url,title,max) ** 打开一个子窗口,参数列表：url,标题，是否默认最大化
 * onReady(handle) win10-ui初始化完毕后的回调
 * menuOpen() 开始菜单打开
 * menuClose() 开始菜单关闭
