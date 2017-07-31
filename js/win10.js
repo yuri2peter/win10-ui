@@ -189,11 +189,12 @@ var Win10 = {
     },
     newMsg: function (title, content,handle_click) {
         var e = $('<div class="msg">' +
-            '<div class="title">' + title + '<span class="btn_close_msg fa fa-close"></span></div>' +
+            '<div class="title">' + title +'</div>'+
             '<div class="content">' + content + '</div>' +
+            '<span class="btn_close_msg fa fa-close"></span>' +
             '</div>');
         $("#win10_command_center .msgs").prepend(e);
-        e.find('.content:first').click(function () {
+        e.find('.content:first,.title:first').click(function () {
             if(handle_click){
                 handle_click(e);
             }
@@ -491,7 +492,7 @@ var Win10 = {
             Win10.commandCenterClose();
         });
         $('#win10').on('click',".msg .btn_close_msg", function () {
-            var msg = $(this).parent().parent();
+            var msg = $(this).parent();
             $(msg).addClass('animated slideOutRight');
             setTimeout(function () {
                 msg.remove()

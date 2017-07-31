@@ -242,11 +242,12 @@ body {
     width: calc(100% - 20px);
 }
 
-#win10-menu .list .item>.icon,.sub-item>.icon{
+#win10-menu .list .item>.icon,#win10-menu .list .sub-item>.icon,.sub-item>.icon{
     line-height: 40px;
     font-size: 26px;
     float: left;
     margin-right: 0.5em;
+    width: 30px;
 }
 
 #win10-menu .list .sub-item{
@@ -455,6 +456,7 @@ body {
     padding:10px;
     margin-top: 4px;
     transition: background-color 0.5s;
+    position: relative;
 }
 
 #win10_command_center .msgs .msg.animated{
@@ -469,7 +471,7 @@ body {
 #win10_command_center .msgs .msg:hover .title{
     color: white;
 }
-#win10_command_center .msgs .msg:hover>.title>.btn_close_msg{
+#win10_command_center .msgs .msg:hover>.btn_close_msg{
     color: grey;
 }
 
@@ -483,13 +485,16 @@ body {
     line-height: 28px;
 }
 
-#win10_command_center .msgs .msg>.title>.btn_close_msg{
+#win10_command_center .msgs .msg>.btn_close_msg{
     cursor: pointer;
-    float: right;
     color: transparent;
+    padding: 3px;
+    position: absolute;
+    top: 11px;
+    right: 11px;
 }
 
-#win10_command_center .msgs .msg>.title>.btn_close_msg:hover{
+#win10_command_center .msgs .msg>.btn_close_msg:hover{
     color: white;
 }
 
@@ -596,12 +601,12 @@ body {
     resize: none;
 }
 /*右键菜单*/
-.right-menu { position: absolute; width: 150px; height: auto; background-color: rgb(255, 255, 255); border: #CCC 1px solid; display: none; border-radius: 5px; z-index: 99999999; }
-.right-menu ul { margin: 0px; padding: 0px; }
-.right-menu ul li { list-style: none; line-height: 30px; height: 30px; margin: 3px 0px; padding: 0px; font-size: 13px; }
-.right-menu ul li a { text-decoration: none; display: block; font-family: 微软雅黑; padding: 0px 5px 0 30px; height: 100%; color: #333; outline: none; }
-.right-menu ul li a:hover { background-color: #DDD; }
-.right-menu ul hr { margin: 1px 0px; height: 0px; border: 0px; border-bottom: #CCC 1px solid; }
+/*.right-menu { position: absolute; width: 150px; height: auto; background-color: rgb(255, 255, 255); border: #CCC 1px solid; display: none; border-radius: 5px; z-index: 99999999; }*/
+/*.right-menu ul { margin: 0px; padding: 0px; }*/
+/*.right-menu ul li { list-style: none; line-height: 30px; height: 30px; margin: 3px 0px; padding: 0px; font-size: 13px; }*/
+/*.right-menu ul li a { text-decoration: none; display: block; font-family: 微软雅黑; padding: 0px 5px 0 30px; height: 100%; color: #333; outline: none; }*/
+/*.right-menu ul li a:hover { background-color: #DDD; }*/
+/*.right-menu ul hr { margin: 1px 0px; height: 0px; border: 0px; border-bottom: #CCC 1px solid; }*/
 /*块级按钮*/
 .win10-open-iframe .layui-layer-ico{background-image:none;}
 .win10-open-iframe .layui-layer-setwin {
@@ -650,6 +655,14 @@ body {
     top:5px ;
     margin-right: 0.5em;
 }
+
+#win10-menu>.list>.sub-item img.icon,#win10-menu>.list>.item img.icon{
+    width: 30px;
+    position: relative;
+    top:5px ;
+    margin-right: 0.5em;
+}
+
 /*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/
 .black-green{background:#009688}
 .green{background:#5FB878}
@@ -729,12 +742,6 @@ body {
     }
 
     #win10_btn_time{display: none}
-    #win10-menu .list .item>.icon,.sub-item>.icon{
-        line-height: 40px;
-        font-size: 16px;
-        float: left;
-        margin-right: 4px;
-    }
     #win10-menu-switcher{
         display: block;
     }
