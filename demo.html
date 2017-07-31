@@ -30,7 +30,6 @@
             Win10.setBgUrl({
                 main:'./img/wallpapers/main.jpg',
                 mobile:'./img/wallpapers/mobile.jpg',
-                login:'./img/wallpapers/login.jpg'
             });
 
             Win10.setAnimated([
@@ -47,51 +46,45 @@
 <div id="win10">
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
-            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'img/icon/win10.png\'/>Win10-UI官网')">
-                <div class="icon"><img src="img/icon/win10.png"/></div>
+            <div class="shortcut" onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/win10.png\'/>Win10-UI官网')">
+                <img class="icon" src="./img/icon/win10.png"/>
                 <div class="title">Win10-UI官网</div>
             </div>
-            <div class="shortcut" onclick="Win10.openUrl('https://yuri2.cn','<img class=\'icon\' src=\'img/icon/blogger.png\'/>尤里2号的博客')">
-                <div class="icon"><img src="img/icon/blogger.png"/></div>
+            <div class="shortcut" onclick="Win10.openUrl('https://yuri2.cn','<img class=\'icon\' src=\'./img/icon/blogger.png\'/>尤里2号的博客')">
+                <img class="icon" src="./img/icon/blogger.png"/>
                 <div class="title">Yuri2's Blog</div>
             </div>
-            <div class="shortcut" onclick="Win10.openUrl('./doc.html','<img class=\'icon\' src=\'img/icon/doc.png\'/>开发文档')">
-                <div class="icon"><img src="img/icon/doc.png"/></div>
+            <div class="shortcut" onclick="Win10.openUrl('./doc.html','<img class=\'icon\' src=\'./img/icon/doc.png\'/>开发文档')">
+                <img class="icon" src="./img/icon/doc.png"/>
                 <div class="title">开发文档</div>
             </div>
             <div class="shortcut" onclick="window.open('https://github.com/yuri2peter/win10-ui')">
-                <div class="icon"><img src="img/icon/github.png"/></div>
+                <img class="icon" src="./img/icon/github.png"/>
                 <div class="title">github</div>
             </div>
-            <div class="shortcut" onclick="Win10.openUrl('https://www.oschina.net/p/win10-ui','<img class=\'icon\' src=\'img/icon/kyzg.png\'/>开源中国（求支持~）')">
-                <div class="icon"><img src="img/icon/kyzg.png"/></div>
+            <div class="shortcut" onclick="Win10.openUrl('https://www.oschina.net/p/win10-ui','<img class=\'icon\' src=\'./img/icon/kyzg.png\'/>开源中国（求支持~）')">
+                <img class="icon" src="./img/icon/kyzg.png"/>
                 <div class="title">开源中国</div>
             </div>
             <div class="shortcut" onclick="window.open('https://github.com/yuri2peter/win10-ui/archive/master.zip')">
-                <div class="icon"><img src="img/icon/download.png"/></div>
+                <img class="icon" src="./img/icon/download.png"/>
                 <div class="title">快速获取</div>
             </div>
-            <div class="shortcut" onclick='Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon black-green\"></i>字体图标")'>
-                <div class="icon black-green"><i class="fa fa-camera-retro icon"></i></div>
-                <div class="title">字体图标</div>
-        </div>
+            <div class="shortcut" ondblclick='Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon black-green\"></i>字体图标")'>
+                <i class="fa fa-camera-retro icon black-green"></i>
+                <div class="title">字体图标(双击)</div>
+            </div>
         </div>
     </div>
     <div id="win10-menu" class="hidden">
         <div class="list win10-menu-hidden animated animated-slideOutLeft">
-            <div class="item"><span class=" icon fa fa-wrench fa-fw"></span><span>API测试</span></div>
+            <div class="item"><i class=" icon fa fa-wrench fa-fw"></i><span>API测试</span></div>
             <div class="sub-item" onclick="Win10.openUrl('./child.html','子页')">父子页沟通</div>
             <div class="sub-item" onclick="Win10.commandCenterOpen()">打开消息中心</div>
             <div class="sub-item" onclick="Win10.newMsg('API测试','通过API可以发送消息至消息中心，自定义标题与内容(点击我试试)',function() {alert('click')})">发送带回调的消息</div>
             <div class="sub-item" onclick="Win10.menuClose()">关闭菜单</div>
-            <div class="item" onclick="Win10.aboutUs()"><span class=" icon fa fa-star fa-fw"></span>关于</div>
-            <div class="item" onclick="
-layer.confirm('确认要关闭本页吗?', {icon: 3, title:'提示'}, function(index){
-  Win10.exit();
-  layer.close(index);
-});
-            "><span class=" icon fa fa-window-close fa-fw"></span>关闭
-            </div>
+            <div class="item" onclick="Win10.aboutUs()"><i class=" icon fa fa-star fa-fw"></i>关于</div>
+            <div class="item" onclick=" Win10.exit();"><i class=" icon fa fa-window-close fa-fw"></i>关闭</div>
         </div>
         <div class="blocks">
             <div class="menu_group">

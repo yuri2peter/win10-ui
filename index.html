@@ -31,7 +31,6 @@
             Win10.setBgUrl({
                 main: './img/wallpapers/main.jpg',
                 mobile: './img/wallpapers/mobile.jpg',
-                login: './img/wallpapers/login.jpg'
             });
 
             Win10.setAnimated([
@@ -49,12 +48,12 @@
     <div class="desktop">
         <div id="win10-shortcuts" class="shortcuts-hidden">
             <div class="shortcut"
-                 onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'img/icon/win10.png\'/>Win10-UI官网')">
-                <div class="icon"><img src="img/icon/win10.png"/></div>
+                 onclick="Win10.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/win10.png\'/>Win10-UI官网')">
+                <img class="icon" src="./img/icon/win10.png"/>
                 <div class="title">Win10-UI官网</div>
             </div>
             <div class="shortcut" onclick="window.open('./demo.html')">
-                <div class="icon"><img src="img/icon/demo.png"/></div>
+                <img class="icon" src="./img/icon/demo.png"/>
                 <div class="title">查看DEMO</div>
             </div>
         </div>
@@ -62,7 +61,7 @@
     <div id="win10-menu" class="hidden">
         <div class="list win10-menu-hidden animated animated-slideOutLeft">
             <div class="item"
-                 onclick="layer.confirm('确认要关闭本页吗?', {icon: 3, title:'提示'}, function(index){Win10.exit();layer.close(index);});">
+                 onclick="Win10.exit()">
                 <i class=" icon fa fa-window-close fa-fw"></i>关闭
             </div>
         </div>
