@@ -121,6 +121,7 @@ v1.1.170731（文档更新中）
 * exit() 关闭整个页面（有确认提示）
 * aboutUs() 关于信息
 * lang(cn,en) 简单的双语支持，如果是中文环境返回cn，否则返回en
+* getLayeroByIndex(index) 根据openUrl返回的索引，返回窗体的jq对象
 
 ## 进阶篇
 
@@ -160,13 +161,15 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 ####小磁贴设计
 
 * 小磁贴的尺寸固定位44px/格，方便开发者设计自己想要的样式
-* 活用setAnimated函数
+* 灵活使用setAnimated函数
 * 自定义一些hover的动画能起到很好的效果哦
 * vue等前端神器的支持
 
 #### 父子页沟通
 
-编写中...
+* 要使用子页工具集，请先引入win10.child.js
+* 自由的使用Win10_child对象吧，目前包含close、newMsg函数；也可以使用Win10对象，将指向父页的Win10对象。
+* 父页打开子窗口的函数openUrl会返回ifram的索引index，使用getLayeroByIndex(index)获得子窗口对象,然后就可以方便的控制子窗口的行为了。
 
 ####颜色预定义
 
