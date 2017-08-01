@@ -529,6 +529,7 @@ body {
 
 .win10-open-iframe .layui-layer-content{
     background-color: white;
+    max-height: calc(100% - 42px);
 }
 
 .win10-open-iframe .layui-layer-title{

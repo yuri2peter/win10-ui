@@ -104,8 +104,8 @@ v1.1.170801
     });
 </script>
 ```
-
 > 所有方法都需要加``Win10.``前缀。
+
 * setBgUrl(bgs) 设置背景图片 ``Win10.setBgUrl({main:'宽屏壁纸url',mobile:'竖屏壁纸url',})``
 * openUrl(url,title,max) ** 打开一个子窗口,参数列表：url,标题，是否默认最大化
 * onReady(handle) win10-ui初始化完毕后的回调
@@ -161,7 +161,7 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 ```
 >在开始菜单项中，使用icon一样可以定义图片图标和字体图标
 
-####小磁贴设计
+#### 小磁贴设计
 
 * 小磁贴的尺寸固定位44px/格，方便开发者设计自己想要的样式
 * 灵活使用setAnimated函数
@@ -174,7 +174,7 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 * 自由的使用Win10_child对象吧，目前包含close、newMsg函数；也可以使用Win10对象，将指向父页的Win10对象。
 * 父页打开子窗口的函数openUrl会返回ifram的索引index，使用getLayeroByIndex(index)获得子窗口对象,然后就可以方便的控制子窗口的行为了。
 
-####颜色预定义
+#### 颜色预定义
 
 各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010
 * .black-green{background:#009688}
