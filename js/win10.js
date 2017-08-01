@@ -637,7 +637,7 @@ var Win10 = {
             closeBtn: 1, //不显示关闭按钮
             anim: 2,
             skin: 'layui-layer-molv',
-            title: 'win10-ui v1.1.170731',
+            title: 'win10-ui v1.1.170801',
             shadeClose: true, //开启遮罩关闭
             area: ['420px', '240px'], //宽高
             content: '<div style=\'padding: 10px\'>' +
