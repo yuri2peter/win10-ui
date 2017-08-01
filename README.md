@@ -9,7 +9,9 @@ Win10-ui是一款win10风格的后台UI，让您轻松搭建一个别具一格�
 
 ## 版本
 
-v1.1.170731（文档更新中）
+v1.1.170801
+
+>v1.1上线啦，涉及到API级别的修改，v1.0的小伙伴们请仔细阅读文档和DEMO平稳过渡(话说正好是八一建军节)。
 
 ## 预览
  ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-5.png)
@@ -174,13 +176,13 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 ####颜色预定义
 
 各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010
-.black-green{background:#009688}
-.green{background:#5FB878}
-.black{background:#393D49}
-.blue{background:#1E9FFF}
-.orange{background:#F7B824}
-.red{background:#FF5722}
-.dark{background:#2F4056}
+* .black-green{background:#009688}
+* .green{background:#5FB878}
+* .black{background:#393D49}
+* .blue{background:#1E9FFF}
+* .orange{background:#F7B824}
+* .red{background:#FF5722}
+* .dark{background:#2F4056}
 
 ## 未来开发计划
 
