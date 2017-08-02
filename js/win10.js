@@ -169,6 +169,40 @@ var Win10 = {
             btn.addClass('active');
         }
     },
+    _renderContextMenu:function (x,y,menu,trigger) {
+        this._removeContextMenu();
+        if(menu===true){return;}
+        var dom = $("<div class='win10-context-menu'><ul></ul></div>");
+        $('#win10').append(dom);
+        var ul=dom.find('ul');
+        for(var i=0;i<menu.length;i++){
+            var item=menu[i];
+            if(item==='|'){
+                ul.append($('<hr/>'));
+                continue;
+            }
+            if(typeof(item)==='string'){
+                ul.append($('<li>'+item+'</li>'));
+                continue;
+            }
+            if(typeof(item)==='object'){
+                var sub=$('<li>'+item[0]+'</li>');
+                ul.append(sub);
+                sub.click(trigger,item[1]);
+                continue;
+            }
+        }
+        //修正坐标
+        if(x+150>document.body.clientWidth){x-=150}
+        if(y+dom.height()>document.body.clientHeight){y-=dom.height()}
+        dom.css({
+            top:y,
+            left:x,
+        });
+    },
+    _removeContextMenu:function () {
+        $('.win10-context-menu').remove();
+    },
     _init:function () {
 
         //获取语言
@@ -205,13 +239,7 @@ var Win10 = {
         });
         $("#win10_btn_show_desktop").click(function () {
             $("#win10 .desktop").click();
-            $('#win10_btn_group_middle>.btn.show').each(function () {
-                var index = $(this).attr('index');
-                var layero = Win10.getLayeroByIndex(index);
-                $(this).removeClass('show');
-                $(this).removeClass('active');
-                layero.hide();
-            })
+            Win10.hideWins();
         });
         $("#win10-menu-switcher").click(function () {
             if(Win10._switchMenuTooHurry){return;}
@@ -332,6 +360,22 @@ var Win10 = {
         setTimeout(function () {
             console.log(Win10.lang('本页由Win10-UI强力驱动\n更多信息：http://win10ui.yuri2.cn \nWin10-UI,轻松打造别具一格的后台界面 ','The page is strongly driven by Win10-UI.\nFor more info: http://win10ui.yuri2.cn.\n Win10-UI, easy to create a unique background interface.'))
         },2000);
+        //点击清空右键菜单
+        $(document).click(function () {
+            Win10._removeContextMenu();
+        });
+        //设置默认右键菜单
+        Win10.setContextMenu('#win10',true);
+        Win10.setContextMenu('#win10>.desktop',[
+            ['<i class="fa fa-fw fa-window-maximize"></i> 进入全屏',function () {Win10.enableFullScreen()}],
+            ['<i class="fa fa-fw fa-window-restore"></i> 退出全屏',function () {Win10.disableFullScreen()}],
+            '|',
+            ['<i class="fa fa-fw fa-star"></i> 关于',function () {Win10.aboutUs()}],
+        ]);
+        Win10.setContextMenu('#win10_btn_group_middle',[
+            ['<i class="fa fa-fw fa-window-minimize"></i> 全部隐藏',function () {Win10.hideWins()}],
+            ['<i class="fa fa-fw fa-window-close"></i> 全部关闭',function () {Win10.closeAll()}],
+        ]);
     },
     setBgUrl:function (bgs) {
         this._bgs=bgs;
@@ -637,7 +681,7 @@ var Win10 = {
             closeBtn: 1, //不显示关闭按钮
             anim: 2,
             skin: 'layui-layer-molv',
-            title: 'win10-ui v1.1.170801',
+            title: 'win10-ui v1.1.170802',
             shadeClose: true, //开启遮罩关闭
             area: ['420px', '240px'], //宽高
             content: '<div style=\'padding: 10px\'>' +
@@ -646,6 +690,28 @@ var Win10 = {
             '<p>作者邮箱:yuri2peter@qq.com</p>' +
             '</div>'
         });
+    },
+    setContextMenu:function (jq_dom, menu) {
+        if(typeof (jq_dom)==='string'){
+            jq_dom=$(jq_dom);
+        }
+        jq_dom.unbind('contextmenu');
+        jq_dom.on('contextmenu', function(e) {
+            if(menu){
+                Win10._renderContextMenu(e.pageX,e.pageY,menu,this);
+                e.preventDefault();
+                e.stopPropagation();
+            }
+        });
+    },
+    hideWins:function () {
+        $('#win10_btn_group_middle>.btn.show').each(function () {
+            var index = $(this).attr('index');
+            var layero = Win10.getLayeroByIndex(index);
+            $(this).removeClass('show');
+            $(this).removeClass('active');
+            layero.hide();
+        })
     },
     onReady:function (handle) {
         Win10._handleReady=handle;

@@ -596,12 +596,13 @@ body {
     resize: none;
 }
 /*右键菜单*/
-/*.right-menu { position: absolute; width: 150px; height: auto; background-color: rgb(255, 255, 255); border: #CCC 1px solid; display: none; border-radius: 5px; z-index: 99999999; }*/
-/*.right-menu ul { margin: 0px; padding: 0px; }*/
-/*.right-menu ul li { list-style: none; line-height: 30px; height: 30px; margin: 3px 0px; padding: 0px; font-size: 13px; }*/
-/*.right-menu ul li a { text-decoration: none; display: block; font-family: 微软雅黑; padding: 0px 5px 0 30px; height: 100%; color: #333; outline: none; }*/
-/*.right-menu ul li a:hover { background-color: #DDD; }*/
-/*.right-menu ul hr { margin: 1px 0px; height: 0px; border: 0px; border-bottom: #CCC 1px solid; }*/
+#win10 .win10-context-menu { left: 0;top: 0;position: fixed; width: 150px; height: auto; background-color: rgb(255, 255, 255); border: #CCC 1px solid; display: block; border-radius: 5px; z-index: 99999999; }
+#win10 .win10-context-menu ul { margin: 0px; padding: 0px; }
+#win10 .win10-context-menu ul li {transition: background-color 0.5s;cursor: default;padding: 0px 1em; list-style: none; line-height: 30px; height: 30px; margin: 3px 0;  font-size: 13px; }
+#win10 .win10-context-menu ul li:hover { background-color: #DDD; }
+#win10 .win10-context-menu ul li a {text-decoration: none; display: block; height: 100%; color: #333; outline: none; }
+#win10 .win10-context-menu ul hr { margin: 0; height: 0px; border: 0px; border-bottom: rgb(233,233,233) 1px solid;border-top: none }
+
 /*块级按钮*/
 .win10-open-iframe .layui-layer-ico{background-image:none;}
 .win10-open-iframe .layui-layer-setwin {

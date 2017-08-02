@@ -10,9 +10,9 @@ Win10-ui是一款win10风格的后台UI，让您轻松搭建一个别具一格�
 
 ## 版本
 
-v1.1.170801
+v1.1.170802
 
->v1.1上线啦，涉及到API级别的修改，v1.0的小伙伴们请仔细阅读文档和DEMO平稳过渡(话说正好是八一建军节)。
+>v1.1上线啦，涉及到API级别的修改，v1.0的小伙伴们请仔细阅读文档和DEMO平稳过渡
 
 ## 预览
  ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-5.png)
@@ -125,6 +125,8 @@ v1.1.170801
 * aboutUs() 关于信息
 * lang(cn,en) 简单的双语支持，如果是中文环境返回cn，否则返回en
 * getLayeroByIndex(index) 根据openUrl返回的索引，返回窗体的jq对象
+* hideWins() 最小化所有窗口
+* setContextMenu(jq_dom, menu) 右键菜单配置（详见进阶篇）
 
 ## 进阶篇
 
@@ -185,6 +187,26 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 * .red{background:#FF5722}
 * .dark{background:#2F4056}
 
+#### 右键菜单配置
+
+Win10.setContextMenu(jq_dom, menu) 可接管系统默认的右键菜单。
+其中jq_dom是jq对象或选择器字符串,menu是菜单配置项(true表示禁言默认菜单,null表示恢复默认菜单,[数组]表示自定义菜单)
+~~~js
+//典型用法(桌面菜单)
+Win10.setContextMenu('#win10>.desktop',[
+   '菜单标题', //单字符串，不带回调
+   ['进入全屏',function () {Win10.enableFullScreen()}], //菜单项+点击回调
+   ['退出全屏',function () {Win10.disableFullScreen()}],
+   '|', //分隔符
+   ['关于',function () {Win10.aboutUs()}],
+]);
+
+//设置menu为true会起到禁用系统默认菜单的作用
+Win10.setContextMenu('#win10',true);
+~~~
+> 点击回调函数可以声明一个参数e,将传入点击事件的对象。特别的，e.data是触发右键菜单的对象。
+
+
 ## 未来开发计划
 
 * 可拖拽磁贴
@@ -215,6 +237,7 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 
 ## 更新日志
 
+* 2017/8/02 [增强]右键菜单
 * 2017/7/31 [增强]iframe子页js工具集
 * 2017/7/31 [精简]去除了登录相关的API，登录页现在作为独立模板存在
 * 2017/7/31 [增强]优化任务栏和子窗口图标的表现，设立图标辅助类icon；背景图片惰性加载（需要用api设置图片的url）；newMsg函数现在可以传入第三个参数设置点击的回调
