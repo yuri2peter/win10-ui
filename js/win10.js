@@ -364,6 +364,11 @@ var Win10 = {
         $(document).click(function () {
             Win10._removeContextMenu();
         });
+        //禁用右键的右键
+        $(document).on('contextmenu','.win10-context-menu',function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+        });
         //设置默认右键菜单
         Win10.setContextMenu('#win10',true);
         Win10.setContextMenu('#win10>.desktop',[
@@ -698,7 +703,7 @@ var Win10 = {
         jq_dom.unbind('contextmenu');
         jq_dom.on('contextmenu', function(e) {
             if(menu){
-                Win10._renderContextMenu(e.pageX,e.pageY,menu,this);
+                Win10._renderContextMenu(e.clientX,e.clientY,menu,this);
                 e.preventDefault();
                 e.stopPropagation();
             }
