@@ -657,6 +657,7 @@ body {
 .orange{background:#F7B824}
 .red{background:#FF5722}
 .dark{background:#2F4056}
+.purple{background:#b074e6}
 @media screen and (max-width:768px){
     #win10-menu{
         width:calc(100% - 10px);

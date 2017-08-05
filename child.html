@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>子页测试</title>
+    <script src="./js/jquery-2.2.4.min.js"></script>
     <script src="./js/win10.child.js"></script>
     <style>
         .btn{
@@ -26,9 +27,13 @@
         function f1() {
             Win10_child.newMsg('子页的问候','这是从iframe页调用APi发送的消息哦');
         }
+        function f2() {
+            Win10_child.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/win10.png\'/>Win10-UI官网')
+        }
     </script>
 </head>
 <body>
     <div class="btn" onclick="f1()">子页给父页发消息</div>
+    <div class="btn" onclick="f2()">子页打开子窗口</div>
 </body>
 </html>

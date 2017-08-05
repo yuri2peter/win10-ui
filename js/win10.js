@@ -2,6 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 var Win10 = {
+    _debug:true,
     _bgs:{
         main:'',
         mobile:'',
@@ -32,8 +33,13 @@ var Win10 = {
             if (document.activeElement) {
                 var activeElement = document.activeElement;
                 for (var i in this.iframes) {
+                    var eid=undefined;
+                    if((eid=this.iframes[i].element.id) && !document.getElementById(eid)){
+                        delete this.iframes[i];
+                        continue;
+                    }
                     if (activeElement === this.iframes[i].element) { // user is in this Iframe
-                        if (this.iframes[i].hasTracked == false) {
+                        if (this.iframes[i].hasTracked === false) {
                             this.iframes[i].cb.apply(window, []);
                             this.iframes[i].hasTracked = true;
                         }
@@ -44,6 +50,7 @@ var Win10 = {
             }
         }
     },
+    _iframe_click_lock_children:{},
     _renderBar:function () {
       //调整任务栏项目的宽度
         if(this._countTask<=0){return;} //防止除以0
@@ -544,7 +551,7 @@ var Win10 = {
             this._countTask++;
         }
         url=url.replace(/(^\s*)|(\s*$)/g, "");
-        var preg=/^(https?:\/\/|\.\.?\/|\/\/)/;
+        var preg=/^(https?:\/\/|\.\.?\/|\/\/?)/;
         if(!preg.test(url)){
             url='http://'+url;
         }
@@ -646,9 +653,17 @@ var Win10 = {
                 // layero.find('.layui-layer-resize').click();
             }
         });
+
+
         Win10._iframeOnClick.track(layero_opened.find('iframe:first')[0], function() {
-            Win10._settop(layero_opened);
-            Win10._checkTop(); });
+            if(Object.getOwnPropertyNames(Win10._iframe_click_lock_children).length===0){
+                Win10._settop(layero_opened);
+                Win10._checkTop();
+            }else{
+                console.log('click locked');
+            }
+        });
+
         this.menuClose();
         this.commandCenterClose();
         return index;
