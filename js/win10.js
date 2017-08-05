@@ -543,7 +543,7 @@ var Win10 = {
             }
         })
     },
-    openUrl: function (url, title,max) {
+    openUrl: function (url, title,areaAndOffset) {
         if(this._countTask>12){
             layer.msg("您打开的太多了，歇会儿吧~");
             return false;
@@ -561,7 +561,12 @@ var Win10 = {
         if (!title) {
             title = url;
         }
-        if (this.isSmallScreen() || max) {
+        var area,offset;
+        if(typeof areaAndOffset ==='object'){
+            area=areaAndOffset[0];
+            offset=areaAndOffset[1];
+        }
+        else if (this.isSmallScreen() || areaAndOffset==='max') {
             area = ['100%', (document.body.clientHeight - 40) + 'px'];
             offset = ['0', '0'];
         } else {
