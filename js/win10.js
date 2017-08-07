@@ -327,7 +327,7 @@ window.Win10 = {
                 zIndex:99999999999
             }, function (value, i) {
                 layer.close(i);
-                Win10.openUrl(value)
+                Win10.openUrl(value,value,Win10.isSmallScreen()?'max':false)
             });
         });
         setInterval(function () {
@@ -706,7 +706,7 @@ window.Win10 = {
             closeBtn: 1, //不显示关闭按钮
             anim: 2,
             skin: 'layui-layer-molv',
-            title: 'win10-ui v1.1.170802',
+            title: 'win10-ui v1.1.170805',
             shadeClose: true, //开启遮罩关闭
             area: ['420px', '240px'], //宽高
             content: '<div style=\'padding: 10px\'>' +
