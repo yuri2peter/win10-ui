@@ -2,8 +2,8 @@
  * Created by Yuri2 on 2017/7/31.
  */
 //此处代码适合在子页面使用
-var Win10_parent=parent.Win10; //获取父级Win10对象的句柄
-var Win10_child={
+window.Win10_parent=parent.Win10; //获取父级Win10对象的句柄
+window.Win10_child={
     close:function () {
         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
         parent.layer.close(index); //再执行关闭

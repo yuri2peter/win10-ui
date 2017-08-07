@@ -1,7 +1,7 @@
 /**
  * Created by Yuri2 on 2017/7/10.
  */
-var Win10 = {
+window.Win10 = {
     _debug:true,
     _bgs:{
         main:'',
