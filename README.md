@@ -15,11 +15,11 @@ v1.1.170805
 >v1.1上线啦，涉及到API级别的修改，v1.0的小伙伴们请仔细阅读文档和DEMO平稳过渡
 
 ## 预览
- ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-5.png)
+ ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-5.png-IMG_800_400)
  
- ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-1.png)
+ ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-1.png-IMG_800_400)
  
- ![4](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-4.png)
+ ![4](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-4.png-IMG_800_400)
 
 
 ## 特性
