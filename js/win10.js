@@ -210,6 +210,13 @@ window.Win10 = {
     _removeContextMenu:function () {
         $('.win10-context-menu').remove();
     },
+    _closeWin:function (index) {
+        $("#win10_" + index).remove();
+        layer.close(index);
+        Win10._checkTop();
+        Win10._countTask--;//回退countTask数
+        Win10._renderBar();
+    },
     _init:function () {
 
         //获取语言
@@ -303,10 +310,7 @@ window.Win10 = {
         });
         $('#win10_btn_group_middle').on('click','.btn_close',function () {
             var index = $(this).parent().attr('index') ;
-            Win10.getLayeroByIndex(index).remove();
-            $(this).parent().remove();
-            Win10._countTask--;
-            Win10._renderBar();
+            Win10._closeWin(index);
         });
         $('#win10-menu .list').on('click','.item',function () {
             var e=$(this);
@@ -706,10 +710,10 @@ window.Win10 = {
             closeBtn: 1, //不显示关闭按钮
             anim: 2,
             skin: 'layui-layer-molv',
-            title: 'win10-ui v1.1.170805',
+            title: 'WIN10-UI v1.1.2',
             shadeClose: true, //开启遮罩关闭
             area: ['420px', '240px'], //宽高
-            content: '<div style=\'padding: 10px\'>' +
+            content: '<div style="padding: 10px;font-size: 12px">' +
             '<p>支持组件:layer、jquery、animated.css、font-awesome</p>' +
             '<p>尤里2号©版权所有</p>' +
             '<p>作者邮箱:yuri2peter@qq.com</p>' +

@@ -10,17 +10,16 @@ Win10-ui是一款win10风格的后台UI，让您轻松搭建一个别具一格�
 
 ## 版本
 
-v1.1.170805
+v1.1.2
 
->v1.1上线啦，涉及到API级别的修改，v1.0的小伙伴们请仔细阅读文档和DEMO平稳过渡
+>v1.1.2相较于v.1.1.1.x作了视觉上的优化，同时增强了代码稳定性。
 
 ## 预览
- ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-5.png-IMG_800_400)
- 
- ![1](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-1.png-IMG_800_400)
- 
- ![4](http://ojp71nnay.bkt.clouddn.com/win10-uiwin10-ui-4.png-IMG_800_400)
 
+ ![1](http://win10ui.yuri2.cn/src/img/preview/win10-preview.gif)
+ 
+ ![1](http://win10ui.yuri2.cn/src/img/preview/win10-preview-mobile.gif)
+ 
 
 ## 特性
 
@@ -132,6 +131,12 @@ v1.1.170805
 
 >推荐仔细查看demo的代码，很多用法都有所提及
 
+#### 设计思路
+
+* Win10-UI应当作为你网站模块的主入口，而具体功能页面适合用子窗口的形式打开。子窗口是以iframe实现的，减少了js、css冲突，保证了独立性。同时父子页之间也可以通过Win10_child.js的API进行沟通
+* 桌面图标适用于最常用的操作，菜单适用于构建所有操作的清单（这里的操作不限于打开子窗口）
+* 小磁贴视觉冲击力强，除了可以做出醒目的按钮，也可以用作信息展板，甚至于在磁贴的方块空间内构建复杂的应用（如音乐播放器）
+
 #### icon辅助类
 
 本着极简的设计风格，所有图标相关的辅助类都设置为'icon'
@@ -173,19 +178,19 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 #### 父子页沟通
 
 * 要使用子页工具集，请先引入win10.child.js
-* 自由的使用Win10_child对象吧，目前包含close、newMsg函数；也可以使用Win10对象，将指向父页的Win10对象。
-* 父页打开子窗口的函数openUrl会返回ifram的索引index，使用getLayeroByIndex(index)获得子窗口对象,然后就可以方便的控制子窗口的行为了。
+* 自由的使用Win10_child对象吧，目前包含close、newMsg、openUrl函数；也可以使用Win10_parent对象，将指向父页的Win10对象。
+* 父页打开子窗口的函数openUrl会返回索引index，使用getLayeroByIndex(index)获得子窗口对象,然后就可以方便的控制子窗口的行为了。
 
 #### 颜色预定义
 
 各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010
-* .black-green{background:#009688}
-* .green{background:#5FB878}
-* .black{background:#393D49}
-* .blue{background:#1E9FFF}
-* .orange{background:#F7B824}
-* .red{background:#FF5722}
-* .dark{background:#2F4056}
+* black-green{background:#009688}
+* green{background:#5FB878}
+* black{background:#393D49}
+* blue{background:#1E9FFF}
+* orange{background:#F7B824}
+* red{background:#FF5722}
+* dark{background:#2F4056}
 
 #### 右键菜单配置
 
@@ -213,7 +218,6 @@ Win10.setContextMenu('#win10',true);
 * 多主题切换
 * 主题生成器
 * 日历、音乐播放器等小组件
-* 右键菜单功能加强
 
 ## 联系作者
 
@@ -237,6 +241,7 @@ Win10.setContextMenu('#win10',true);
 
 ## 更新日志
 
+* 2017/8/15 [优化]提高了通用背景色css的优先级；优化菜单图标大小与位置；三种代码脚手架(懒人必备)
 * 2017/8/07 [修复]修复了在小屏幕下打开自定义网页不会全屏的bug
 * 2017/8/05 [增强]openUrl函数现在第三个参数可以自定义窗口的打开大小和位置了！
 * 2017/8/05 [微调]win10.child.js增加了常用函数openUrl,父级对象句柄由Win10改名为Win10_parent;增加了一个紫色的css;优化内存释放

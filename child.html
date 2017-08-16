@@ -30,10 +30,14 @@
         function f2() {
             Win10_child.openUrl('http://win10ui.yuri2.cn','<img class=\'icon\' src=\'./img/icon/win10.png\'/>Win10-UI官网')
         }
+        function f3() {
+            Win10_child.close();
+        }
     </script>
 </head>
 <body>
     <div class="btn" onclick="f1()">子页给父页发消息</div>
     <div class="btn" onclick="f2()">子页打开子窗口</div>
+    <div class="btn" onclick="f3()">关闭子页</div>
 </body>
 </html>

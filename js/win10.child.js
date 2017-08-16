@@ -6,7 +6,7 @@ window.Win10_parent=parent.Win10; //获取父级Win10对象的句柄
 window.Win10_child={
     close:function () {
         var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-        parent.layer.close(index); //再执行关闭
+        Win10_parent._closeWin(index);
     },
     newMsg: function (title, content,handle_click){
         Win10_parent.newMsg(title, content,handle_click)
