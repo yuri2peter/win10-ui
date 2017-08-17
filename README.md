@@ -195,7 +195,7 @@ Win10.openUrl("http://win10ui.yuri2.cn","<i class=\"fa fa-camera-retro icon\"></
 #### 右键菜单配置
 
 Win10.setContextMenu(jq_dom, menu) 可接管系统默认的右键菜单。
-其中jq_dom是jq对象或选择器字符串,menu是菜单配置项(true表示禁言默认菜单,null表示恢复默认菜单,[数组]表示自定义菜单)
+其中jq_dom是jq对象或选择器字符串,menu是菜单配置项(true表示禁用默认菜单,null表示恢复默认菜单,[数组]表示自定义菜单)
 ~~~js
 //典型用法(桌面菜单)
 Win10.setContextMenu('#win10>.desktop',[

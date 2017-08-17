@@ -58,12 +58,12 @@ window.Win10 = {
         btns.css('width',('calc('+(1/this._countTask*100)+'% - 1px )'))
     },
     _handleReady:function () {},
-    _hideShotcut:function () {
+    _hideShortcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");
         that.removeClass('animated flipInX');
         that.addClass('animated flipOutX');
     },
-    _showShotcut:function () {
+    _showShortcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");
         that.removeClass('animated flipOutX');
         that.addClass('animated flipInX');
@@ -351,8 +351,8 @@ window.Win10 = {
         Win10._startAnimate();//动画处理
         Win10.renderShortcuts();//渲染图标
         $("#win10-shortcuts").removeClass('shortcuts-hidden');//显示图标
+        Win10._showShortcut();//显示图标
         Win10.renderMenuBlocks();//渲染磁贴
-        Win10._showShotcut();//显示磁贴
         //窗口改大小，重新渲染
         $(window).resize(function() {
             Win10.renderShortcuts();
@@ -400,13 +400,13 @@ window.Win10 = {
     menuClose: function () {
         $("#win10-menu").removeClass('opened');
         $("#win10-menu").addClass('hidden');
-        this._showShotcut();
+        this._showShortcut();
         $(".win10-open-iframe").removeClass('hide');
     },
     menuOpen: function () {
         $("#win10-menu").addClass('opened');
         $("#win10-menu").removeClass('hidden');
-        this._hideShotcut();
+        this._hideShortcut();
         $(".win10-open-iframe").addClass('hide');
     },
     menuToggle: function () {
@@ -418,12 +418,12 @@ window.Win10 = {
     },
     commandCenterClose: function () {
         $("#win10_command_center").addClass('hidden_right');
-        this._showShotcut();
+        this._showShortcut();
         $(".win10-open-iframe").removeClass('hide');
     },
     commandCenterOpen: function () {
         $("#win10_command_center").removeClass('hidden_right');
-        this._hideShotcut();
+        this._hideShortcut();
         $(".win10-open-iframe").addClass('hide');
         $("#win10-msg-nof").removeClass('fa-commenting-o');
     },
