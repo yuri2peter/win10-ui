@@ -356,6 +356,7 @@ body {
     cursor: pointer;
     padding: 0;
     position: absolute;
+    transition: all 0.5s;
 }
 
 #win10 #win10-shortcuts .shortcut:hover {
