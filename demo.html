@@ -43,16 +43,32 @@
             }, 1500);
 
             setTimeout(function () {
-                layer.open({
-                    type: 2,
-                    title: '最新资讯',
-                    area: ['300px', '380px'],
-                    shade:0,
-                    offset: 'rt',
-                    content: '//win10ui.yuri2.cn/src/broadcast.html'
-                })
-            },2000)
+                Win10.openUrl('//win10ui.yuri2.cn/src/broadcast.html','最新资讯',[['300px', '380px'],'rt'])
+            },2000);
         });
+
+        //该函数可删除 Orz
+        function win10_forgive_me() {
+            Win10.enableFullScreen();
+            layer.alert('即将展示下一版本特性', {}, function(index){
+                var blue=$('<img src="./img/presentation/bluescreen.jpg" style="position: fixed;width: 100%;height:100%;top:0;z-index:9999999999" />');
+                setTimeout(function () {
+                    $('body').append(blue);
+                },3000);
+                setTimeout(function () {
+                    blue.remove();
+                    Win10.disableFullScreen();
+                    setTimeout(function () {
+                        layer.msg('开个玩笑，别打我');
+
+                    },1000);
+                },7000);
+                layer.close(index);
+            });
+
+        }
+
+
     </script>
 </head>
 <body>
@@ -100,13 +116,54 @@
             <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-shortcut.html','图标代码生成器')">桌面图标代码生成器</div>
             <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-tile.html','磁贴代码生成器')">磁贴代码生成器</div>
             <div class="sub-item" onclick="Win10.openUrl('win10ui.yuri2.cn/src/tools/builder-menu.html','菜单代码生成器')">菜单代码生成器</div>
-            <div class="item" onclick="Win10.aboutUs()"><i class="purple icon fa fa-star fa-fw"></i>关于</div>
-            <div class="item" onclick=" Win10.exit();"><i class="black icon fa fa-window-close fa-fw"></i>关闭</div>
+            <div class="item" onclick="Win10.aboutUs()"><i class="purple icon fa fa-info-circle fa-fw"></i>关于</div>
+            <div class="item" onclick="layer.open({
+                title:'支持作者',
+                type: 1,
+                area:'300px',
+                offset:'100px',
+                shadeClose:true,
+                content: '<img width=\'300\' src=\'./img/presentation/donation.jpg\' />'
+            })"><i class="green icon fa fa-thumbs-up fa-fw"></i>捐赠</div>
+            <div class="item" onclick=" Win10.exit();"><i class="black icon fa fa-power-off fa-fw"></i>关闭</div>
         </div>
         <div class="blocks">
             <div class="menu_group">
                 <div class="title">
-                    常用场景(宽屏)
+                    应用示例
+                </div>
+                <div loc="1,1" size="6,3" class="block">
+                    <div class="content red detail" >
+                        <iframe style="margin-top: 10px" frameborder="no" border="0" marginwidth="0" marginheight="0" width=264 height=110 src="//music.163.com/outchain/player?type=2&id=110771&auto=0&height=90"></iframe>
+                    </div>
+                    <div class="content red cover">
+                        <img width="264" style="position: relative;top: -50px;" src="./img/presentation/wangyiyun.gif" />
+                    </div>
+                </div>
+                <div loc="1,4" size="4,4" class="block">
+                    <div class="content blue cover" style="font-size: 30px;line-height: 176px;text-align: center">
+                        <i class="fa fa-cloud fa-fw"></i> 天气
+                    </div>
+                    <div class="content detail" style="background-color: #094871">
+                        <iframe style="margin: 8px auto;display: block;" name="sinaWeatherTool" src="http://weather.news.sina.com.cn/chajian/iframe/weatherStyle32.html?city=%E5%90%88%E8%82%A5" width="166" height="152" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+                <div loc="5,4" size="2,2" class="block">
+                    <div class="content">
+                        <img style="display: inline-block;border-radius: 4px" width="88px" src="http://q2.qlogo.cn/headimg_dl?bs=824831811&dst_uin=824831811&src_uin=824831811&fid=824831811&spec=100&url_enc=0&referer=bu_interface&term_type=PC"/>
+                    </div>
+                </div>
+                <div loc="5,6" size="2,2" class="block" onclick="win10_forgive_me()">
+                    <div class="content red">
+                        <div style="text-align: center;font-size: 30px;line-height: 44px"><i class="fa fa-bug fa-fw"></i></div>
+                        <div style="text-align: center;font-size: 16px;line-height: 44px">别点我</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu_group">
+                <div class="title">
+                    常用场景
                 </div>
                 <div loc="1,1" size="4,3" class="block">
                     <div class="content" style="background-color: orangered">
@@ -121,7 +178,7 @@
                 </div>
                 <div loc="5,2" size="2,2" class="block">
                     <div class="content">
-                        <img style="width: 40px;height: 40px;margin: 2px auto;display: block" src="./img/icon/baidu.png">
+                        <img style="width: 40px;height: 40px;margin: 5px auto;display: block" src="./img/icon/baidu.png">
                         <div class="win10-block-content-text">图标按钮</div>
                     </div>
                 </div>
@@ -139,44 +196,6 @@
                     <div class="content" style="background-color: blue" onclick="window.open('https://www.baidu.com')">
                         <div class="win10-block-content-text">外部链接</div>
                     </div>
-                </div>
-            </div>
-            <div class="menu_group">
-                <div class="title">
-                    方块布局
-                </div>
-                <div loc="1,1" size="4,4" class="block">
-                    <div class="content" style="background-color: red"></div>
-                </div>
-                <div loc="5,1" size="2,2" class="block">
-                    <div class="content" style="background-color: blue"></div>
-                </div>
-                <div loc="5,3" size="1,2" class="block">
-                    <div class="content" style="background-color: green"></div>
-                </div>
-                <div loc="6,3" size="1,1" class="block">
-                    <div class="content" style="background-color: yellow"></div>
-                </div>
-                <div loc="6,4" size="1,1" class="block">
-                    <div class="content" style="background-color: black"></div>
-                </div>
-                <div loc="1,6" size="3,1" class="block">
-                    <div class="content" style="background-color: red"></div>
-                </div>
-                <div loc="1,5" size="2,1" class="block">
-                    <div class="content" style="background-color: orangered"></div>
-                </div>
-                <div loc="4,6" size="2,1" class="block">
-                    <div class="content" style="background-color: yellow"></div>
-                </div>
-                <div loc="3,5" size="2,1" class="block">
-                    <div class="content" style="background-color: green"></div>
-                </div>
-                <div loc="6,5" size="1,2" class="block">
-                    <div class="content" style="background-color: darkslategray"></div>
-                </div>
-                <div loc="5,5" size="1,1" class="block">
-                    <div class="content" style="background-color: blue"></div>
                 </div>
             </div>
         </div>

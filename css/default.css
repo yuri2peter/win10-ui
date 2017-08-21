@@ -324,6 +324,19 @@ body {
     height: calc(100% + 4px);
     position: absolute;
     left: -2px;top: -2px;
+    overflow: hidden;
+    transition: left 0.5s;
+}
+
+#win10-menu .menu_group .block:hover .content.cover{
+    left: calc(-100% - 4px);
+}
+
+#win10-menu .menu_group .block .content.detail{
+    left: calc(100% + 4px);
+}
+#win10-menu .menu_group .block:hover .content.detail{
+    left: -2px;
 }
 
 #win10-menu .menu_group .block:hover  {
@@ -616,10 +629,11 @@ body {
     font-size: 0;
     line-height: 40px;
     height: 40px;
+    background-color: rgba(49, 49, 50, 0.94);
 }
 .win10-open-iframe .layui-layer-setwin a {
     position: relative;
-    width: 40px;
+    width: 30px;
     height: 40px;
     font-size: 13px;
     text-align: center;
