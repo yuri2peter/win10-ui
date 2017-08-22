@@ -575,8 +575,8 @@ window.Win10 = {
             docElm.webkitRequestFullScreen();
         }
         //IE11
-        else if (elem.msRequestFullscreen) {
-            elem.msRequestFullscreen();
+        else if (docElm.msRequestFullscreen) {
+            document.body.msRequestFullscreen();
         }
     },
     disableFullScreen: function () {
