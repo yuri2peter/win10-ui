@@ -2,7 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 window.Win10 = {
-    _version:'v1.1.2.1',
+    _version:'v1.1.2.2(dev)',
     _debug:true,
     _bgs:{
         main:'',
@@ -414,6 +414,7 @@ window.Win10 = {
             ['<i class="fa fa-fw fa-info-circle"></i> '+Win10.lang('关于','About Us'),function () {Win10.aboutUs()}],
         ]);
         Win10.setContextMenu('#win10_btn_group_middle',[
+            ['<i class="fa fa-fw fa-window-maximize"></i> '+Win10.lang('全部显示','Show All Windows'),function () {Win10.showWins()}],
             ['<i class="fa fa-fw fa-window-minimize"></i> '+Win10.lang('全部隐藏','Hide All Windows'),function () {Win10.hideWins()}],
             ['<i class="fa fa-fw fa-window-close"></i> '+Win10.lang('全部关闭','Close All Windows'),function () {Win10.closeAll()}],
         ]);
@@ -424,7 +425,28 @@ window.Win10 = {
             if(btn.length>0){
                 btn.toggleClass('fa-commenting-o');
             }
-        },1000)
+        },600);
+
+        //绑定快捷键
+        $("body").keyup(function (e) {
+            if (e.ctrlKey)
+            {
+                switch (e.keyCode){
+                    case 37://left
+                        $("#win10_btn_win").click();
+                        break;
+                    case 38://up
+                        Win10.showWins();
+                        break;
+                    case 39://right
+                        $("#win10_btn_command").click();
+                        break;
+                    case 40://down
+                        Win10.hideWins();
+                        break;
+                }
+            }
+        });
     },
     setBgUrl:function (bgs) {
         this._bgs=bgs;
@@ -778,6 +800,15 @@ window.Win10 = {
             $(this).removeClass('active');
             layero.hide();
         })
+    },
+    showWins:function () {
+        $('#win10_btn_group_middle>.btn').each(function () {
+            var index = $(this).attr('index');
+            var layero = Win10.getLayeroByIndex(index);
+            $(this).addClass('show');
+            layero.show();
+        });
+        Win10._checkTop();
     },
     onReady:function (handle) {
         Win10._handleReady=handle;
