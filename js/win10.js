@@ -326,8 +326,8 @@ window.Win10 = {
             }
         });
         $("#win10-btn-browser").click(function () {
-            var area = ['100%', (document.body.clientHeight - 40) + 'px'];
-            var offset = ['0', '0'];
+            // var area = ['100%', (document.body.clientHeight - 40) + 'px'];
+            // var offset = ['0', '0'];
             layer.prompt({
                 title: Win10.lang('访问网址','Visit URL'),
                 formType: 2,
@@ -337,8 +337,9 @@ window.Win10 = {
                 zIndex:99999999999
             }, function (value, i) {
                 layer.close(i);
-                Win10.
-                openUrl(value,value,Win10.isSmallScreen()?[area,offset]:false)
+                layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
+                    Win10.openUrl(value,value);
+                });
             });
         });
         setInterval(function () {
