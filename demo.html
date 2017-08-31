@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <title>win10-ui</title>
+    <title>WIN10-UI-DEMO</title>
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/windows.ico'>
     <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
     <link href="./css/animate.css" rel="stylesheet">
@@ -36,19 +36,16 @@
                 'animated flip',
                 'animated bounceIn',
             ], 0.01);
-            setTimeout(function () {
-                Win10.newMsg('推荐全屏', '按下F11全屏以达到最佳视觉效果(点击进入)',function () {
-                    Win10.enableFullScreen();
-                })
-            }, 1500);
 
             setTimeout(function () {
                 Win10.newMsg('官方交流一群', '欢迎各位大侠加入讨论：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=4Er0u8i">[点击加入]205546163</a>')
             }, 2500);
 
             setTimeout(function () {
-                Win10.openUrl('//win10ui.yuri2.cn/src/broadcast.html','最新资讯',[['300px', '380px'],'rt'])
+                Win10.openUrl('//win10ui.yuri2.cn/src/broadcast.html','<i class="fa fa-newspaper-o icon red"></i>最新资讯',[['300px', '380px'],'rt'])
             },2000);
+
+
         });
 
         //该函数可删除 Orz
@@ -71,8 +68,6 @@
             });
 
         }
-
-
     </script>
 </head>
 <body>
@@ -103,9 +98,13 @@
                 <img class="icon" src="./img/icon/download.png"/>
                 <div class="title">快速获取</div>
             </div>
-            <div class="shortcut" ondblclick='Win10.openUrl("./login.html","<i class=\"fa fa-user icon black-green\"></i>示例登录页")'>
+            <div class="shortcut" onclick='Win10.openUrl("./login.html","<i class=\"fa fa-user icon black-green\"></i>示例登录页")'>
                 <i class="fa fa-user icon black-green"></i>
-                <div class="title">示例登录页（双击）</div>
+                <div class="title">示例登录页</div>
+            </div>
+            <div class="shortcut" onclick='Win10.openUrl("win10ui.yuri2.cn/src/workshop.php","<i class=\"fa fa-gears  icon purple\"></i>创意工坊")'>
+                <i class="fa fa-gears  icon purple"></i>
+                <div class="title">创意工坊</div>
             </div>
         </div>
     </div>
@@ -125,7 +124,7 @@
                 title:'支持作者',
                 type: 1,
                 area:'300px',
-                offset:'100px',
+                offset:'50px',
                 shadeClose:true,
                 content: '<img width=\'300\' src=\'./img/presentation/donation.jpg\' />'
             })"><i class="green icon fa fa-thumbs-up fa-fw"></i>捐赠</div>

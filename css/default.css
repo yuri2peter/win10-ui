@@ -629,7 +629,6 @@ body {
     font-size: 0;
     line-height: 40px;
     height: 40px;
-    background-color: rgba(49, 49, 50, 0.94);
 }
 .win10-open-iframe .layui-layer-setwin a {
     position: relative;
@@ -677,6 +676,8 @@ body {
 .win10-open-iframe .red,#win10 .red{background:#FF5722!important;}
 .win10-open-iframe .dark,#win10 .dark{background:#2F4056!important;}
 .win10-open-iframe .purple,#win10 .purple{background:#b074e6!important;}
+
+
 @media screen and (max-width:768px){
     #win10-menu{
         width:calc(100% - 10px);

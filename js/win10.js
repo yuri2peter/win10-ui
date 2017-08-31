@@ -315,14 +315,19 @@ window.Win10 = {
         });
         $('#win10-menu .list').on('click','.item',function () {
             var e=$(this);
+            if(e.hasClass('has-sub-down')){
+                $('#win10-menu .list .item.has-sub-up').toggleClass('has-sub-down').toggleClass('has-sub-up');
+                $("#win10-menu .list .sub-item").slideUp();
+            }
+            e.toggleClass('has-sub-down').toggleClass('has-sub-up');
             while (e.next().hasClass('sub-item')){
-                e.toggleClass('has-sub-down');
-                e.toggleClass('has-sub-up');
                 e.next().slideToggle();
                 e=e.next();
             }
         });
         $("#win10-btn-browser").click(function () {
+            var area = ['100%', (document.body.clientHeight - 40) + 'px'];
+            var offset = ['0', '0'];
             layer.prompt({
                 title: Win10.lang('访问网址','Visit URL'),
                 formType: 2,
@@ -332,7 +337,8 @@ window.Win10 = {
                 zIndex:99999999999
             }, function (value, i) {
                 layer.close(i);
-                Win10.openUrl(value,value,Win10.isSmallScreen()?'max':false)
+                Win10.
+                openUrl(value,value,Win10.isSmallScreen()?[area,offset]:false)
             });
         });
         setInterval(function () {

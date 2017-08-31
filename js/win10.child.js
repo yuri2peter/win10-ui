@@ -17,7 +17,8 @@ window.Win10_child={
         var index=Win10_parent.openUrl(url, title,max);
         setTimeout(function () {
             delete Win10_parent._iframe_click_lock_children[click_lock_name];
-        },1000)
+        },1000);
+        return index;
     }
 };
 
