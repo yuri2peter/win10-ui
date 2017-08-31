@@ -395,7 +395,7 @@ window.Win10 = {
                 var title = document.title;
                 var ua = navigator.userAgent.toLowerCase();
                 if (ua.indexOf("360se") > -1) {
-                    alert("由于360浏览器功能限制，请按 Ctrl+D 手动收藏！");
+                    layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!','Your browser does not support, please press Ctrl+D to manual collection!'));
                 }
                 else if (ua.indexOf("msie 8") > -1) {
                     window.external.AddToFavoritesBar(url, title); //IE8
@@ -404,14 +404,14 @@ window.Win10 = {
                     try{
                         window.external.addFavorite(url, title);
                     }catch(e){
-                        alert('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
+                        layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!','Your browser does not support, please press Ctrl+D to manual collection!'));
                     }
                 }
                 else if (window.sidebar) {
                     window.sidebar.addPanel(title, url, "");
                 }
                 else {
-                    alert('您的浏览器不支持,请按 Ctrl+D 手动收藏!');
+                    layer.alert(Win10.lang('您的浏览器不支持,请按 Ctrl+D 手动收藏!','Your browser does not support, please press Ctrl+D to manual collection!'));
                 }
             }],
             ['<i class="fa fa-fw fa-window-maximize"></i> '+Win10.lang('进入全屏','Enable Full Screen'),function () {Win10.enableFullScreen()}],
