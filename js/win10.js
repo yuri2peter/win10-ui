@@ -616,6 +616,7 @@ window.Win10 = {
         }else{
             this._countTask++;
         }
+        if(!url){url='404'}
         url=url.replace(/(^\s*)|(\s*$)/g, "");
         var preg=/^(https?:\/\/|\.\.?\/|\/\/?)/;
         if(!preg.test(url)){
