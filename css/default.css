@@ -345,7 +345,9 @@ body {
 
 #win10 #win10-shortcuts {
     height: calc(100% - 40px);
-    position: relative;
+    position: absolute;
+    left: 0;top: 0;
+    z-index: 100;
 }
 
 #win10 #win10-shortcuts.shortcuts-hidden .shortcut{display: none}
@@ -666,6 +668,17 @@ body {
     position: relative;
     top:2px ;
     margin-right: 0.5em;
+}
+
+/*桌面舞台样式*/
+#win10-desktop-scene{
+    width: 100%;
+    height: calc(100% - 40px);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 0;
+    background-color: transparent;
 }
 
 /*各种颜色 具体效果见 https://www.kancloud.cn/qq85569256/xzui/350010*/

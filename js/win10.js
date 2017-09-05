@@ -2,7 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 window.Win10 = {
-    _version:'v1.1.2.2',
+    _version:'v1.1.2.3(dev)',
     _debug:true,
     _bgs:{
         main:'',
