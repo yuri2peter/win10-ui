@@ -2,7 +2,7 @@
  * win10_bind_open_windows 子窗口事件自动绑定插件
  * @author:vG
  * @修订:Yuri2
- * @version:2.0
+ * @version:2.0.1
  * 说明: 所有#win10下的元素加入类win10-open-window即可自动绑定openUrl函数，无须用onclick手动绑定
  */
 
@@ -26,7 +26,7 @@
         data-icon-image="https://www.baidu.com/img/bd_logo1.png"
         data-icon-font="star"
         data-icon-bg="red"
-        data-area-offset="30px,20px">
+        data-area-offset="[['300px', '380px'],'rt']">
         <i class="icon fa fa-fw fa-user-circle blue" ></i>
         <div class="title">百度</div>
     </div>
@@ -48,7 +48,7 @@ $(function(){
         //>> 判断url地址是否为空 如果为空 不予处理
         if($this.data('url') !== "") {
             //>> 获取弹窗标题
-            var title = $this.data('title'),
+                var title = $this.data('title')||'',
                 areaAndOffset;
             //>> 判断是否有标题图片
             var bg=$this.data('icon-bg')?$this.data('icon-bg'):'';
@@ -67,7 +67,7 @@ $(function(){
             if($this.data('area-offset')) {
                 areaAndOffset = $this.data('area-offset');
                 //>> 判断是否有分隔符
-                if(areaAndOffset.indexOf(',')){
+                if(areaAndOffset.indexOf(',')!==-1){
                     areaAndOffset = eval(areaAndOffset);
                 }
             }

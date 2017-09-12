@@ -12,9 +12,11 @@ Win10-UI是一款win10风格的后台UI，让您轻松搭建一个别具一格�
 
 v1.1.2.3(dev)
 
-> 该版本为小更新，修复了一些bug，优化了一些细节（具体改动请参考更新日志）。
+> 该版本为小更新，针对插件开发作了一些优化，添加了一些语法糖（具体改动请参考更新日志）。
 
-> 更新方式：无须修改html文件，覆盖其他文件。
+> 更新方式：基本无须修改html文件，覆盖css和win10.js文件。
+> 关于html文件的修改，只是添加一行代码。在#win10>.desktop div下，添加一个div `<div id="win10-desktop-scene"></div>`到末尾。
+> 对于实在不想修改html的用户，我们在js中添加了自动修正的代码，所以不修改也会有正常的效果。但是这种修正代码将会在未来版本被取消，只作为临时使用。
 
 ## 预览
 
@@ -128,6 +130,7 @@ v1.1.2.3(dev)
 * getLayeroByIndex(index) 根据openUrl返回的索引，返回窗体的jq对象
 * hideWins() 最小化所有窗口
 * setContextMenu(jq_dom, menu) 右键菜单配置（详见进阶篇）
+* getDesktopScene() 返回桌面舞台的jq对象（用于高级用户diy壁纸）
 
 ## 进阶篇
 
@@ -232,9 +235,46 @@ Win10.setContextMenu('#win10',true);
 
 为了让广大开发者能更自由的定义自己的桌面，Win10-UI自v1.1.2.3版本起加入桌面舞台。
 桌面舞台是一个`id`为`win10-desktop-scene`的div，位于`#win10>.desktop`下。桌面舞台预定义了css，使其浮动于桌面图标的下方。
-借助此特效，你甚至可以发挥想象力，制作出动态壁纸。
-
+借助此特性，你甚至可以发挥想象力，制作出动态壁纸。
+> 使用`getDesktopScene`函数可以快捷获取桌面舞台的jq对象。
 > v1.1.2.3之前的版本，如果想要临时体验桌面舞台的支持特性，可以去官方群下载补丁`win10_desktop_scene_support.js`。
+
+#### 子窗口事件自动绑定
+
+所有#win10下的元素加入类win10-open-window即可自动绑定openUrl函数，无须用onclick手动绑定
+> v1.1.2.3之前的版本，如果想要临时体验桌面子窗口事件自动绑定支持特性，可以去官方群下载插件`win10_bind_open_windows.js`。
+
+ * 标签属性说明
+ * data-title:窗口标题
+ * data-url:窗口url地址
+ * data-icon-image:图片图标的url
+ * data-icon-font:字体图标名 如star
+ * data-icon-bg:图标背景色 black-green,green,black,blue,orange,red,dark,purple
+ * data-area-offset:窗口 [区域,偏移]
+ *
+ * 特别的，如果子节点有icon和title的css类，可以自动识别为图标和标题，无须设置data-title和data-icon-image(font)
+
+~~~html
+<div class="shortcut win10-open-window"
+        data-url="http://www.baidu.com"
+        data-title="我是百度"
+        data-icon-image="https://www.baidu.com/img/bd_logo1.png"
+        data-icon-font="star"
+        data-icon-bg="red"
+        data-area-offset="[['300px', '380px'],'rt']">
+        <i class="icon fa fa-fw fa-user-circle blue" ></i>
+        <div class="title">百度</div>
+</div>
+~~~
+> 这是所有可选项都用上的完整写法。
+
+~~~html
+<div class="shortcut win10-open-window" data-url="www.baidu.com" >
+        <i class="icon fa fa-fw fa-user-circle blue" ></i>
+        <div class="title">百度</div>
+</div>
+~~~
+> 这是推荐的简洁写法，可以满足大部分场景的需要。
 
 ## 未来开发计划
 
@@ -269,15 +309,17 @@ Win10.setContextMenu('#win10',true);
  * 取消iframe读取时的菊花图标
  * 多壁纸切换API
 
+
 ## 更新日志
 
 ### v1.1.2.3(dev)
 
-* 2017/9/5 [增强]增加了一层div专门提供给高级桌面背景插件或自定义
-* 2017/9/1 [修复]修复一处颜色的笔误（蓝色写成了黑色）
+* 2017/9/12 [修复]修复了切换全屏下最大化窗口造成的子窗口高度溢出问题
+* 2017/9/6  [增强]添加了一个辅助函数`getDesktopScene`返回桌面舞台对象;现在onReady函数可以被多次调用了，将按顺序执行(真实执行顺序是在DOM结构基本确定之后)
+* 2017/9/5  [增强]增加了一层div桌面舞台，专门提供给高级桌面背景插件或自定义
+* 2017/9/1  [修复]修复一处颜色的笔误（蓝色写成了黑色）
 
 ### v1.1.2.2
-
 * 2017/8/31 [优化]菜单项打开机制改为手风琴式
 * 2017/8/31 [修复]修正菜单脚手架工具的一处笔误（导致菜单项样式异常）
 * 2017/8/29 [优化]一些a标签按钮不会导致地址栏变动了(小技巧：#改成javascript:void(0))
@@ -286,6 +328,7 @@ Win10.setContextMenu('#win10',true);
 
 ### v1.1.2.1
 
+* 2017/9/12 [增强]将win10_bind_open_windows插件整合进了主框架，具体使用方法见“进阶篇”
 * 2017/8/21 [优化]减小了子窗口按钮的宽度;手机屏幕openUrl打开的子窗口现在默认最大化了;消息提醒图标改为闪烁（感谢'Mr天明'的建议）
 * 2017/8/18 [增强]预定义了磁贴.content.cover和.content.detail类，让其拥有鼠标经过的翻页动画
 * 2017/8/15 [优化]提高了通用背景色css的优先级；优化菜单图标大小与位置；三种代码脚手架(懒人必备)

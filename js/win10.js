@@ -58,7 +58,7 @@ window.Win10 = {
         var btns=$("#win10_btn_group_middle>.btn");
         btns.css('width',('calc('+(1/this._countTask*100)+'% - 1px )'))
     },
-    _handleReady:function () {},
+    _handleReady:[],
     _hideShortcut:function () {
         var that=$("#win10 #win10-shortcuts .shortcut");
         that.removeClass('animated flipInX');
@@ -218,6 +218,21 @@ window.Win10 = {
         Win10._countTask--;//回退countTask数
         Win10._renderBar();
     },
+    _fixWindowsHeightAndWidth:function(){
+        //此处代码修正全屏切换引起的子窗体尺寸超出屏幕
+        var opens=$('.win10-open-iframe');
+        var clientHeight=document.body.clientHeight;
+        opens.each(function () {
+            var layero_opened=$(this);
+            var height=layero_opened.css('height');
+            height=parseInt(height.replace('px',''));
+            if (height+40>=clientHeight){
+                layero_opened.css('height',clientHeight-40);
+                layero_opened.find('.layui-layer-content').css('height',clientHeight-83);
+                layero_opened.find('.layui-layer-content iframe').css('height',clientHeight-83);
+            }
+        })
+    },
     _init:function () {
 
         //获取语言
@@ -365,6 +380,7 @@ window.Win10 = {
         $(window).resize(function() {
             Win10.renderShortcuts();
             Win10._checkBgUrls();
+            Win10._fixWindowsHeightAndWidth();
         });
         //细节
         $(document).on('focus',".win10-layer-open-browser textarea",function () {
@@ -454,6 +470,23 @@ window.Win10 = {
                 }
             }
         });
+
+        /**
+         * WIN10-UI v1.1.2.2 桌面舞台支持补丁
+         * WIN10-UI v1.1.2.2之后的版本不需要此补丁
+         * @usage 直接引用即可（需要jquery）
+         * @author Yuri2
+         */
+        if($("#win10-desktop-scene").length<1) {
+            $("#win10-shortcuts").css({
+                position: 'absolute',
+                left: 0,
+                top: 0,
+                'z-index': 100,
+            });
+            $("#win10 .desktop").append("<div id='win10-desktop-scene' style='width: 100%;height: calc(100% - 40px);position: absolute;left: 0;top: 0; z-index: 0;background-color: transparent;'></div>")
+        }
+
     },
     setBgUrl:function (bgs) {
         this._bgs=bgs;
@@ -721,7 +754,6 @@ window.Win10 = {
                 $(this).addClass('active');
                 Win10._settop(layero);
                 layero.show();
-                // layero.find('.layui-layer-resize').click();
             }
         });
 
@@ -818,13 +850,19 @@ window.Win10 = {
         });
         Win10._checkTop();
     },
+    getDesktopScene:function () {
+        return $("#win10-desktop-scene");
+    },
     onReady:function (handle) {
-        Win10._handleReady=handle;
+        Win10._handleReady.push(handle);
     }
 };
 
 
 $(function () {
     Win10._init();
-    Win10._handleReady();
+    for(var i in Win10._handleReady){
+        var handle=Win10._handleReady[i];
+        handle();
+    }
 });

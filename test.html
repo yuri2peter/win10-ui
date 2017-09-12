@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
-    <title>WIN10-UI</title>
+    <title>win10-ui</title>
     <link rel='Shortcut Icon' type='image/x-icon' href='./img/windows.ico'>
     <script type="text/javascript" src="./js/jquery-2.2.4.min.js"></script>
     <link href="./css/animate.css" rel="stylesheet">
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./component/font-awesome-4.7.0/css/font-awesome.min.css">
     <link href="./css/default.css" rel="stylesheet">
     <script type="text/javascript" src="./js/win10.js"></script>
+    <script type="text/javascript" src="./js/win10_bind_open_windows.js"></script>
     <style>
         * {
             font-family: "Microsoft YaHei", 微软雅黑, "MicrosoftJhengHei", 华文细黑, STHeiti, MingLiu
@@ -53,6 +54,12 @@
             <div class="shortcut" onclick="window.open('./demo.html')">
                 <img class="icon" src="./img/icon/demo.png"/>
                 <div class="title">查看DEMO</div>
+            </div>
+            <div class="shortcut win10-open-window"
+                 data-url="www.baidu.com"
+                 data-area-offset="max">
+                <img class="icon" src="./img/icon/baidu.png"/>
+                <div class="title">baidu</div>
             </div>
         </div>
         <div id="win10-desktop-scene"></div>
