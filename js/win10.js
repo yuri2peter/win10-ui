@@ -360,7 +360,9 @@ window.Win10 = {
                 zIndex:99999999999
             }, function (value, i) {
                 layer.close(i);
-                iframe.attr('src', value);
+                layer.msg(Win10.lang('请稍候...','Hold on please...'),{time:1500},function () {
+                    iframe.attr('src', value);
+                });
             });
         });
         $(document).on('mousedown','.win10-open-iframe',function () {
