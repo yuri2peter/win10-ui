@@ -38,8 +38,8 @@
             ], 0.01);
 
             setTimeout(function () {
-                Win10.newMsg('官方交流一群', '欢迎各位大侠加入讨论：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=4Er0u8i">[点击加入]205546163</a>')
-            }, 2500);
+                Win10.newMsg('官方交流一群', '欢迎各位大侠加入讨论：<a target="_blank" href="https://jq.qq.com/?_wv=1027&k=4Er0u8i">[点击加入]205546163</a>',function(){ alert("点击回调")},function(id){alert("删除回调id"+id);},15
+				)}, 2500);
 
             setTimeout(function () {
                 Win10.openUrl('//win10ui.yuri2.cn/src/broadcast.html','<i class="fa fa-newspaper-o icon red"></i>最新资讯',[['300px', '380px'],'rt'])
