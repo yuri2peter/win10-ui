@@ -2,7 +2,7 @@
  * Created by Yuri2 on 2017/7/10.
  */
 window.Win10 = {
-    _version:'v1.1.2.3(dev)',
+    _version:'v1.1.2.4',
     _debug:true,
     _bgs:{
         main:'',
@@ -431,7 +431,7 @@ window.Win10 = {
         $(window).resize(function() {
             Win10.renderShortcuts();
             Win10._checkBgUrls();
-            Win10._fixWindowsHeightAndWidth();
+            if(!Win10.isSmallScreen()) Win10._fixWindowsHeightAndWidth(); //2017年11月14日修改，加入了if条件
         });
         //细节
         $(document).on('focus',".win10-layer-open-browser textarea",function () {
