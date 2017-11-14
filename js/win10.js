@@ -624,17 +624,25 @@ window.Win10 = {
             this.commandCenterClose();
         }
     },
-    newMsg: function (title, content,handle_click) {
+     newMsg: function (title, content,handle_click,del_click,newmsg_id) {
         var e = $('<div class="msg">' +
             '<div class="title">' + title +'</div>'+
             '<div class="content">' + content + '</div>' +
-            '<span class="btn_close_msg fa fa-close"></span>' +
+            '<span class="btn_close'+newmsg_id+' btn_close_msg fa fa-close"  ></span>' +
             '</div>');
         $("#win10_command_center .msgs").prepend(e);
         e.find('.content:first,.title:first').click(function () {
             if(handle_click){
                 handle_click(e);
             }
+        });
+		 $('#win10').on('click',".btn_close"+newmsg_id+"", function () {
+            var msg = $(this).parent();
+            $(msg).addClass('animated slideOutRight');
+            setTimeout(function () {
+                msg.remove()
+            }, 500)
+           del_click(newmsg_id);
         });
         layer.tips(Win10.lang('新消息:','New message:')+title, '#win10_btn_command', {
             tips: [1, '#3c6a4a'],
