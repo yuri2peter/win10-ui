@@ -380,7 +380,9 @@ window.Win10 = {
                 $('#win10-menu .list .item.has-sub-up').toggleClass('has-sub-down').toggleClass('has-sub-up');
                 $("#win10-menu .list .sub-item").slideUp();
             }
-            e.toggleClass('has-sub-down').toggleClass('has-sub-up');
+            if(e.next().hasClass('sub-item')){
+                e.toggleClass('has-sub-down').toggleClass('has-sub-up');
+            }
             while (e.next().hasClass('sub-item')){
                 e.next().slideToggle();
                 e=e.next();
