@@ -37,7 +37,7 @@ body {
 }
 
 #win10 *{
-    scrollbar-arrow-color: #5e6a5c;);  /*图6,三角箭头的颜色*/
+    scrollbar-arrow-color: #5e6a5c;  /*图6,三角箭头的颜色*/
     scrollbar-face-color: #5e6a5c;  /*图5,立体滚动条的颜色*/
     scrollbar-3dlight-color: #5e6a5c;  /*图1,立体滚动条亮边的颜色*/
     scrollbar-highlight-color: #5e6a5c;  /*图2,滚动条空白部分的颜色*/
