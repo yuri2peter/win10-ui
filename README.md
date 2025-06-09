@@ -272,6 +272,10 @@ Win10.setContextMenu('#win10',true);
 ~~~
 > 这是推荐的简洁写法，可以满足大部分场景的需要。
 
+## 赞助
+
+[![Powered by DartNode](https://dartnode.com/branding/DN-Open-Source-sm.png)](https://dartnode.com "Powered by DartNode - Free VPS for Open Source")
+
 ## 未来开发计划
 
 * 可拖拽磁贴
